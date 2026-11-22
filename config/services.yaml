@@ -1,0 +1,97 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+  ox.dsn.std: 'std'
+
+imports:
+  - { resource: "../includes/all_services.yml" }
+  - { resource: "services/auth.yml" }
+  - { resource: "services/security.yml" }
+
+services:
+  # Default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  # Symfony Dotenv Dump Command
+  Symfony\Component\Dotenv\Command\DotenvDumpCommand:
+    - '%kernel.project_dir%/.env'
+    - '%kernel.environment%'
+
+  # Core API services (RequestApi ...)
+  Ox\Core\Api\:
+    resource: '../core/classes/Api'
+
+  # Cli Console
+  Ox\Cli\Console\:
+    resource: '../cli/classes/Console'
+    # Les profils (Simulation/config) et les scénarios de crise (Simulation/crisis) sont des
+    # fichiers de config (return [...]), pas des classes : l'auto-enregistrement PSR-4 des
+    # services les prend pour des classes et casse la compilation du conteneur en mode
+    # non-debug (APP_ENV=prod / APP_DEBUG=0).
+    exclude: '../cli/classes/Console/Simulation/{config,crisis}'
+
+  # Inject instance of CStoredObject and check controller perms
+  Ox\Core\Kernel\Resolver\CStoredObjectAttributeValueResolver:
+    tags:
+      - { name: controller.argument_value_resolver, priority: 100 }
+
+  # Event dispatcher
+  Ox\Core\Kernel\Event\:
+    resource: '../core/classes/Kernel/Event/'
+
+  # CSQLDataSource which have to be instanced via CSQLDataSource::get
+  Ox\Core\CSQLDataSource:
+    autowire: false
+    autoconfigure: false
+    factory: [ Ox\Core\CSQLDataSource, 'get' ]
+    arguments: [ '%ox.dsn.std%' ]
+
+  # CApp which have to be instanced via CApp::get
+  Ox\Core\CApp:
+    autowire: false
+    autoconfigure: false
+    factory: [ Ox\Core\CApp, 'getInstance' ]
+
+  # CSessionManager which have to be instanced via CSessionManager::get
+  Ox\Core\Sessions\CSessionManager:
+    autowire: false
+    autoconfigure: false
+    factory: [ Ox\Core\Sessions\CSessionManager, 'get' ]
+
+  # Configurations
+  Ox\Core\Config\Conf:
+    autowire: false
+    autoconfigure: false
+
+  # Locales
+  Ox\Core\Locales\Translator:
+    autowire: false
+    autoconfigure: false
+
+  Ox\Core\Repositories\AbstractRepository:
+    # Repositories does not need to be autoconfigured
+    autoconfigure: false
+    calls:
+      - initFromRequest: [ '@Ox\Core\Api\Request\RequestApi' ]
+
+#dev only services
+when@dev:
+  services:
+    _defaults:
+      autowire: true
+      autoconfigure: true
+
+    Ox\Core\Profiler\LegacyCollector:
+      tags:
+        - name: legacy_collector
+          # must match the value returned by the getName() method
+          id: 'Ox\Core\Profiler\LegacyCollector'
+          # optional template (it has more priority than the value returned by getTemplate())
+          template: 'data_collector/template.html.twig'
+          # optional priority (positive or negative integer; default = 0)
+          # priority: 300

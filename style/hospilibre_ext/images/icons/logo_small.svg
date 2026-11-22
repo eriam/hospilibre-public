@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+     width="32" height="32" role="img" aria-label="Hospilibre">
+<!-- Logo Hospilibre. Marque : croix de soins en cinq pièces détachées — le signe
+     médical, et l'assemblage libre. Lettrage : Roboto Medium, converti en tracés pour
+     ne dépendre d'aucune police installée. Couleurs : $primary #3F51B5 et $secondary
+     #0288D1 de style/hospilibre_ext/sass/inc/utils.scss. -->
+  <title>Hospilibre</title>
+  <rect x="10.56" y="0.00" width="10.88" height="8.48" rx="2.40" fill="#3F51B5"/>
+  <rect x="10.56" y="23.52" width="10.88" height="8.48" rx="2.40" fill="#3F51B5"/>
+  <rect x="0.00" y="10.56" width="8.48" height="10.88" rx="2.40" fill="#3F51B5"/>
+  <rect x="23.52" y="10.56" width="8.48" height="10.88" rx="2.40" fill="#3F51B5"/>
+  <rect x="10.56" y="10.56" width="10.88" height="10.88" rx="2.40" fill="#0288D1"/>
+</svg>

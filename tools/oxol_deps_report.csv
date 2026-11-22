@@ -1,0 +1,467 @@
+fichier,symbole,statut,nb_refs_externes,exemples
+core/classes/CLogger.php,CLogger,depute,5,core/classes/CApp.php | core/classes/CError.php | core/classes/CMbDebug.php | core/classes/CMbPath.php | core/classes/Handlers/Facades/HandlerManager.php
+core/classes/Database/SetupUpdater.php,SetupUpdater,depute,3,cli/classes/Console/DBCompare.php | cli/classes/Console/DBUpdate.php | modules/system/classes/Controllers/Legacy/SetupController.php
+core/classes/Generators/CObjectGenerator.php,CObjectGenerator,depute,5,core/tests/Unit/Generators/CObjectGeneratorTest.php | modules/admin/classes/Generators/CUserGenerator.php | modules/astreintes/classes/Generators/CCategorieAstreinteGenerator.php | modules/dPbloc/classes/Generators/CPlageOpGenerator.php | modules/dPccam/classes/Generators/CDevisCodageGenerator.php
+core/classes/Graph/DependencyGraph.php,DependencyGraph,depute,1,core/tests/Unit/Graph/DependencyGraphTest.php
+core/classes/Module/Requirements/CRequirementsDescription.php,CRequirementsDescription,depute,1,core/tests/Unit/Module/Requirements/CRequirementsDummy.php
+core/classes/Module/Requirements/CRequirementsItem.php,CRequirementsItem,depute,2,core/tests/Unit/Module/Requirements/CRequirementsManagerTest.php | modules/eai/classes/CRequirementsInteropTrait.php
+core/classes/Module/Requirements/CRequirementsManager.php,CRequirementsManager,depute,5,?modules/system/templates/inc_modules.tpl | core/classes/Module/CModule.php | core/tests/Unit/Module/Requirements/CRequirementsDummy.php | core/tests/Unit/Module/Requirements/CRequirementsManagerTest.php | modules/eai/classes/CRequirementsInteropTrait.php
+includes/javascript/doctolib.js,doctolib,depute,5,modules/dPboard/templates/vw_day.tpl | modules/dPboard/templates/vw_day_alternative.tpl | modules/dPcabinet/templates/inc_full_consult.tpl | modules/dPcabinet/templates/inc_patient_infos_accord_consult.tpl | modules/dPcabinet/templates/vw_edit_lieux.tpl
+includes/javascript/reglette.js,reglette,depute,2,core/classes/CMbFieldSpec.php | ?core/classes/ResourceLoaders/CJSLoader.php
+modules/admin/classes/Rgpd/CRGPDManager.php,CRGPDManager,depute,5,core/classes/CPerson.php | index.php | modules/admin/ajax_compare_rgpd_configurations.php | modules/admin/ajax_search_consent.php | modules/admin/ajax_vw_upload_rgpd_file.php
+modules/admin/classes/UsersPermissionsGrid.php,UsersPermissionsGrid,depute,1,modules/admin/classes/Controllers/Legacy/AdminLegacyController.php
+modules/api/classes/CAPITiers.php,CAPITiers,depute,5,modules/api/ajax_send_requests_api.php | modules/api/configure.php | modules/api/controllers/do_send_requests_manually.php | ?modules/api/locales/fr.php | ?modules/api/locales/it.php
+modules/api/classes/CAPITiersException.php,CAPITiersException,depute,2,?modules/api/locales/fr.php | ?modules/api/locales/it.php
+modules/api/classes/CAPITiersOAuth.php,CAPITiersOAuth,depute,2,modules/api/classes/CFitbitAPI.php | modules/api/classes/CWithingsAPI.php
+modules/api/classes/CAPITiersStackRequest.php,CAPITiersStackRequest,depute,5,includes/config.php | modules/api/ajax_refresh_request.php | modules/api/ajax_send_requests_api.php | modules/api/config.php | modules/api/controllers/do_send_requests_manually.php
+modules/api/classes/CFitbitAPI.php,CFitbitAPI,depute,4,includes/config.php | modules/api/config.php | modules/api/locales/fr.php | modules/api/locales/it.php
+modules/api/classes/CGraphConstant.php,CGraphConstant,depute,2,?modules/api/locales/fr.php | ?modules/api/locales/it.php
+modules/api/classes/CGraphConstantFitbit.php,CGraphConstantFitbit,depute,1,modules/api/classes/CGraphConstant.php
+modules/api/classes/CGraphConstantWithings.php,CGraphConstantWithings,depute,1,modules/api/classes/CGraphConstant.php
+modules/api/classes/CPatientUserAPI.php,CPatientUserAPI,depute,5,modules/api/ajax_send_requests_api.php | modules/api/controllers/do_send_requests_manually.php | ?modules/api/locales/fr.php | ?modules/api/locales/it.php | modules/dPpatients/classes/CPatient.php
+modules/api/classes/CUserAPI.php,CUserAPI,depute,2,modules/api/locales/fr.php | ?modules/api/locales/it.php
+modules/api/classes/CUserAPIFitbit.php,CUserAPIFitbit,depute,2,modules/api/locales/fr.php | modules/api/locales/it.php
+modules/api/classes/CUserAPIOAuth.php,CUserAPIOAuth,depute,6,?modules/api/classes/CAPITiers.php | ?modules/api/classes/CFitbitAPI.php | ?modules/api/classes/CPatientUserAPI.php | modules/api/classes/CUserAPIFitbit.php | modules/api/classes/CUserAPIWithings.php
+modules/api/classes/CUserAPIWithings.php,CUserAPIWithings,depute,2,modules/api/locales/fr.php | modules/api/locales/it.php
+modules/api/classes/CWithingsAPI.php,CWithingsAPI,depute,4,includes/config.php | modules/api/config.php | modules/api/locales/fr.php | modules/api/locales/it.php
+modules/api/classes/IAPITiers.php,IAPITiers,depute,1,modules/api/classes/CAPITiers.php
+modules/api/templates/inc_config_api.tpl,inc_config_api,depute,1,modules/api/templates/configure.tpl
+modules/api/templates/inc_configure_idex.tpl,inc_configure_idex,depute,1,modules/api/templates/configure.tpl
+modules/api/templates/inc_tab_requests.tpl,inc_tab_requests,depute,1,modules/api/templates/vw_stack_request_api.tpl
+modules/api/templates/modal_response_request.tpl,modal_response_request,depute,1,modules/api/javascript/api.js
+modules/api/templates/vw_mobile_log.tpl,vw_mobile_log,depute,3,modules/api/classes/CTabsApi.php | ?modules/api/locales/fr.php | ?modules/api/locales/it.php
+modules/api/templates/vw_stack_request_api.tpl,vw_stack_request_api,depute,4,modules/api/javascript/api.js | modules/api/classes/CTabsApi.php | ?modules/api/locales/fr.php | ?modules/api/locales/it.php
+modules/astreintes/classes/AstreinteCalendarBuilder.php,AstreinteCalendarBuilder,depute,1,modules/astreintes/classes/Controllers/Legacy/AstreintesLegacyController.php
+modules/astreintes/classes/AstreinteManager.php,AstreinteManager,depute,1,modules/astreintes/tests/Unit/AstreinteManagerTest.php
+modules/astreintes/classes/Controllers/Legacy/AstreintesLegacyController.php,AstreintesLegacyController,depute,1,includes/legacy_actions.php
+modules/astreintes/classes/Controllers/Legacy/AstreintesSettingsLegacyController.php,AstreintesSettingsLegacyController,depute,1,includes/legacy_actions.php
+modules/astreintes/templates/inc_pref.tpl,inc_pref,depute,5,modules/admin/templates/edit_prefs.tpl | modules/admin/templates/functional_perms.tpl | modules/astreintes/templates/preferences.tpl | modules/dPadmissions/templates/functional_perms.tpl | modules/dPadmissions/templates/preferences.tpl
+modules/astreintes/tests/Fixtures/AstreintesFixtures.php,AstreintesFixtures,depute,3,modules/astreintes/tests/Unit/AstreinteManagerTest.php | modules/astreintes/tests/Unit/CCategorieAstreinteTest.php | modules/astreintes/tests/Unit/CPlageAstreinteTest.php
+modules/cda/classes/CCDABag.php,CCDABag,depute,1,modules/cda/classes/Handle/Level3/ANS/CCDAHandleCRLDLSES.php
+modules/cda/classes/CCDAConfig.php,CCDAConfig,depute,4,modules/cda/classes/CExchangeCDA.php | modules/cda/locales/fr.php | modules/eai/classes/CInteropSender.php | modules/eai/tests/Unit/Configurations/CEAIConfigurationTest.php
+modules/cda/classes/CCDADocTools.php,CCDADocTools,depute,3,modules/cda/classes/Components/Entries/ANS/Transversaux/CDAEntryFRCommentaire.php | modules/cda/classes/Components/Entries/ANS/Transversaux/CDAEntryFRSimpleObservation.php | modules/cda/classes/Documents/CCDADocumentCDA.php
+modules/cda/classes/CCDAReport.php,CCDAReport,depute,4,modules/cda/classes/CCDADomDocument.php | modules/cda/classes/CCDAPOCD_HD000040.php | modules/cda/classes/Parser/CCDAParserFactory.php | ?modules/cda/locales/fr.php
+modules/cda/classes/CCDARepository.php,CCDARepository,depute,2,modules/dPfiles/classes/Controllers/Legacy/CDocumentItemController.php | modules/hl7/classes/Events/XDSb/CHL7v3EventXDSbProvideAndRegisterDocumentSetRequest.php
+modules/cda/classes/Components/CDAComponent.php,CDAComponent,depute,1,modules/cda/classes/Components/Meta/CDAMeta.php
+modules/cda/classes/Components/Entries/ANS/Medications/CDAEntryFRTraitement.php,CDAEntryFRTraitement,depute,4,modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitements.php | modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitementsAdmission.php | modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitementsSortie.php | ?modules/cda/classes/Components/Sections/ANS/PlansOfCare/CDASectionFRDirectivesAnticipees.php
+modules/cda/classes/Components/Entries/ANS/Medications/CDAEntryFRVaccination.php,CDAEntryFRVaccination,depute,1,modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRVaccinations.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRActe.php,CDAEntryFRActe,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAntecedentsChirurgicaux.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRAllergieOuIntolerance.php,CDAEntryFRAllergieOuIntolerance,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeAllergiesEtIntolerances.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFREtatCliniqueTrait.php,CDAEntryFREtatCliniqueTrait,depute,2,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeAllergiesEtIntolerances.php | modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeProblemes.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeAllergiesEtIntolerances.php,CDAEntryFRListeAllergiesEtIntolerances,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAllergiesEtIntolerances.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeProblemes.php,CDAEntryFRListeProblemes,depute,2,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAntecedentsMedicaux.php | modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRProblemesActifs.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRProbleme.php,CDAEntryFRProbleme,depute,2,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRProblemeAntecedentMed.php | modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRProblemePathology.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRProblemeAntecedentMed.php,CDAEntryFRProblemeAntecedentMed,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeProblemes.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRProblemePathology.php,CDAEntryFRProblemePathology,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeProblemes.php
+modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRReferenceInterne.php,CDAEntryFRReferenceInterne,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRActe.php
+modules/cda/classes/Components/Entries/ANS/PlansOfCare/CDAEntryFRDirectiveAnticipee.php,CDAEntryFRDirectiveAnticipee,depute,1,modules/cda/classes/Components/Sections/ANS/PlansOfCare/CDASectionFRDirectivesAnticipees.php
+modules/cda/classes/Components/Entries/ANS/Product/CDAEntryFRProduitDeSante.php,CDAEntryFRProduitDeSante,depute,2,modules/cda/classes/Components/Entries/ANS/Medications/CDAEntryFRTraitement.php | modules/cda/classes/Components/Entries/ANS/Medications/CDAEntryFRVaccination.php
+modules/cda/classes/Components/Entries/CDAEntry.php,CDAEntry,depute,1,modules/cda/classes/Components/Entries/CDAEntryAct.php
+modules/cda/classes/Components/Entries/CDAEntryAct.php,CDAEntryAct,depute,2,modules/cda/classes/Components/Entries/IHE/Transversaux/CDAEntryComment.php | modules/cda/classes/Components/Entries/IHE/Transversaux/CDAEntrySimpleObservation.php
+modules/cda/classes/Components/Entries/CDAEntryOrganizer.php,CDAEntryOrganizer,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAntecedentsFamiliaux.php
+modules/cda/classes/Components/Entries/CDAEntryRole.php,CDAEntryRole,depute,1,modules/cda/classes/Components/Entries/IHE/Product/CDAEntryProduct.php
+modules/cda/classes/Components/Entries/IHE/Medications/CDAEntryImmunization.php,CDAEntryImmunization,depute,1,modules/cda/classes/Components/Entries/ANS/Medications/CDAEntryFRVaccination.php
+modules/cda/classes/Components/Entries/IHE/Medications/CDAEntryMedications.php,CDAEntryMedications,depute,1,modules/cda/classes/Components/Entries/ANS/Medications/CDAEntryFRTraitement.php
+modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryAllergiesAndIntolerances.php,CDAEntryAllergiesAndIntolerances,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRAllergieOuIntolerance.php
+modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryAllergyAndIntoleranceConcern.php,CDAEntryAllergyAndIntoleranceConcern,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeAllergiesEtIntolerances.php
+modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryConcern.php,CDAEntryConcern,depute,2,modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryAllergyAndIntoleranceConcern.php | modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryProblemConcern.php
+modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryInternalReferences.php,CDAEntryInternalReferences,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRReferenceInterne.php
+modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryProblem.php,CDAEntryProblem,depute,2,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRProbleme.php | modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryAllergiesAndIntolerances.php
+modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryProblemConcern.php,CDAEntryProblemConcern,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRListeProblemes.php
+modules/cda/classes/Components/Entries/IHE/OtherConditionHistories/CDAEntryProcedure.php,CDAEntryProcedure,depute,1,modules/cda/classes/Components/Entries/ANS/OtherConditionHistories/CDAEntryFRActe.php
+modules/cda/classes/Components/Entries/IHE/PlansOfCare/CDAEntryAdvancedDirectiveObservation.php,CDAEntryAdvancedDirectiveObservation,depute,1,modules/cda/classes/Components/Entries/ANS/PlansOfCare/CDAEntryFRDirectiveAnticipee.php
+modules/cda/classes/Components/Entries/IHE/Product/CDAEntryProduct.php,CDAEntryProduct,depute,1,modules/cda/classes/Components/Entries/ANS/Product/CDAEntryFRProduitDeSante.php
+modules/cda/classes/Components/Entries/IHE/Transversaux/CDAEntryComment.php,CDAEntryComment,depute,1,modules/cda/classes/Components/Entries/ANS/Transversaux/CDAEntryFRCommentaire.php
+modules/cda/classes/Components/Entries/IHE/Transversaux/CDAEntrySimpleObservation.php,CDAEntrySimpleObservation,depute,1,modules/cda/classes/Components/Entries/ANS/Transversaux/CDAEntryFRSimpleObservation.php
+modules/cda/classes/Components/Meta/CDAMeta.php,CDAMeta,depute,4,modules/cda/classes/Components/Meta/CDAMetaAddress.php | modules/cda/classes/Components/Meta/CDAMetaAuthor.php | modules/cda/classes/Components/Meta/CDAMetaPatientRole.php | modules/cda/classes/Components/Meta/CDAMetaTelecom.php
+modules/cda/classes/Components/Meta/CDAMetaAddress.php,CDAMetaAddress,depute,1,modules/cda/classes/Documents/CCDADocumentCDA.php
+modules/cda/classes/Components/Meta/CDAMetaAssigned.php,CDAMetaAssigned,depute,2,modules/cda/classes/Components/Meta/CDAMetaAssignedAuthor.php | modules/cda/classes/Components/Meta/CDAMetaAssignedEntity.php
+modules/cda/classes/Components/Meta/CDAMetaAssignedAuthor.php,CDAMetaAssignedAuthor,depute,1,modules/cda/classes/Documents/CCDADocumentCDA.php
+modules/cda/classes/Components/Meta/CDAMetaAssignedEntity.php,CDAMetaAssignedEntity,depute,1,modules/cda/classes/Documents/CCDADocumentCDA.php
+modules/cda/classes/Components/Meta/CDAMetaAuthor.php,CDAMetaAuthor,depute,1,modules/cda/classes/Documents/CCDADocumentCDA.php
+modules/cda/classes/Components/Meta/CDAMetaName.php,CDAMetaName,depute,1,modules/cda/classes/Components/Meta/CDAMetaAssigned.php
+modules/cda/classes/Components/Meta/CDAMetaOrganization.php,CDAMetaOrganization,depute,1,modules/cda/classes/Components/Meta/CDAMetaAssigned.php
+modules/cda/classes/Components/Meta/CDAMetaPatientRole.php,CDAMetaPatientRole,depute,1,modules/cda/classes/Documents/CCDADocumentCDA.php
+modules/cda/classes/Components/Meta/CDAMetaTelecom.php,CDAMetaTelecom,depute,1,modules/cda/classes/Documents/CCDADocumentCDA.php
+modules/cda/classes/Components/Sections/ANS/CDASectionFRPathoAnteAllFacteurs.php,CDASectionFRPathoAnteAllFacteurs,depute,1,modules/cda/classes/Documents/CCDADocumentVSM.php
+modules/cda/classes/Components/Sections/ANS/CDASectionFRPlanDeTraitement.php,CDASectionFRPlanDeTraitement,depute,1,modules/cda/classes/Documents/CCDADocumentVSM.php
+modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitements.php,CDASectionFRTraitements,depute,1,modules/cda/classes/Documents/CCDADocumentVaccinationNote.php
+modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitementsAdmission.php,CDASectionFRTraitementsAdmission,depute,1,modules/cda/classes/Documents/CCDADocumentLDLEES.php
+modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitementsSortie.php,CDASectionFRTraitementsSortie,depute,1,modules/cda/classes/Documents/CCDADocumentLDLSES.php
+modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRVaccinations.php,CDASectionFRVaccinations,depute,1,modules/cda/classes/Documents/CCDADocumentVaccinationNote.php
+modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAllergiesEtIntolerances.php,CDASectionFRAllergiesEtIntolerances,depute,2,modules/cda/classes/Documents/CCDADocumentLDLEES.php | modules/cda/classes/Documents/CCDADocumentVaccinationNote.php
+modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAntecedentsChirurgicaux.php,CDASectionFRAntecedentsChirurgicaux,depute,1,modules/cda/classes/Documents/CCDADocumentLDLEES.php
+modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAntecedentsFamiliaux.php,CDASectionFRAntecedentsFamiliaux,depute,1,modules/cda/classes/Components/Sections/ANS/SousSections/CDASectionFRFacteursDeRisques.php
+modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAntecedentsMedicaux.php,CDASectionFRAntecedentsMedicaux,depute,2,modules/cda/classes/Documents/CCDADocumentLDLEES.php | modules/cda/classes/Documents/CCDADocumentVaccinationNote.php
+modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRProblemesActifs.php,CDASectionFRProblemesActifs,depute,1,modules/cda/classes/Documents/CCDADocumentVaccinationNote.php
+modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRResultatsEvenements.php,CDASectionFRResultatsEvenements,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRResultatsEvenementsLDLSES.php
+modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRResultatsEvenementsLDLSES.php,CDASectionFRResultatsEvenementsLDLSES,depute,1,modules/cda/classes/Documents/CCDADocumentLDLSES.php
+modules/cda/classes/Components/Sections/ANS/PlansOfCare/CDASectionFRDirectivesAnticipees.php,CDASectionFRDirectivesAnticipees,depute,1,modules/cda/classes/Documents/CCDADocumentVaccinationNote.php
+modules/cda/classes/Components/Sections/ANS/ReasonsForCare/CDASectionFRRaisonRecommandationNonCode.php,CDASectionFRRaisonRecommandationNonCode,depute,2,modules/cda/classes/Documents/CCDADocumentLDLEES.php | modules/cda/classes/Documents/CCDADocumentLDLSES.php
+modules/cda/classes/Components/Sections/ANS/RelevantStudies/CDASectionFRResultatsExamensNonCode.php,CDASectionFRResultatsExamensNonCode,depute,1,modules/cda/classes/Documents/CCDADocumentVSM.php
+modules/cda/classes/Components/Sections/ANS/SousSections/CDASectionFRCommentaireNonCode.php,CDASectionFRCommentaireNonCode,depute,1,modules/cda/classes/Documents/CCDADocumentLDLEES.php
+modules/cda/classes/Components/Sections/ANS/SousSections/CDASectionFRFacteursDeRisques.php,CDASectionFRFacteursDeRisques,depute,1,modules/cda/classes/Components/Sections/ANS/CDASectionFRPathoAnteAllFacteurs.php
+modules/cda/classes/Components/Sections/ANS/SousSections/CDASectionFRPathoAnteAll.php,CDASectionFRPathoAnteAll,depute,1,modules/cda/classes/Components/Sections/ANS/CDASectionFRPathoAnteAllFacteurs.php
+modules/cda/classes/Components/Sections/CDASection.php,CDASection,depute,1,modules/cda/classes/Documents/CCDADocumentLDLSES.php
+modules/cda/classes/Components/Sections/IHE/Medications/CDASectionAdmissionMedicationHistory.php,CDASectionAdmissionMedicationHistory,depute,1,modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitementsAdmission.php
+modules/cda/classes/Components/Sections/IHE/Medications/CDASectionHospitalDischargeMedications.php,CDASectionHospitalDischargeMedications,depute,1,modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitementsSortie.php
+modules/cda/classes/Components/Sections/IHE/Medications/CDASectionImmunizations.php,CDASectionImmunizations,depute,1,modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRVaccinations.php
+modules/cda/classes/Components/Sections/IHE/Medications/CDASectionMedications.php,CDASectionMedications,depute,1,modules/cda/classes/Components/Sections/ANS/Medications/CDASectionFRTraitements.php
+modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionActiveProblems.php,CDASectionActiveProblems,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRProblemesActifs.php
+modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionAllergiesAndOtherAdverseReactions.php,CDASectionAllergiesAndOtherAdverseReactions,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAllergiesEtIntolerances.php
+modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionCodedEventOutcomes.php,CDASectionCodedEventOutcomes,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRResultatsEvenements.php
+modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionCodedListOfSurgeries.php,CDASectionCodedListOfSurgeries,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAntecedentsChirurgicaux.php
+modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionEventOutcomes.php,CDASectionEventOutcomes,depute,1,modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionCodedEventOutcomes.php
+modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionHistoryOfPastIllness.php,CDASectionHistoryOfPastIllness,depute,1,modules/cda/classes/Components/Sections/ANS/OtherConditionHistories/CDASectionFRAntecedentsMedicaux.php
+modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionListOfSurgeries.php,CDASectionListOfSurgeries,depute,1,modules/cda/classes/Components/Sections/IHE/OtherConditionHistories/CDASectionCodedListOfSurgeries.php
+modules/cda/classes/Components/Sections/IHE/PlansOfCare/CDASectionCodedAdvanceDirectives.php,CDASectionCodedAdvanceDirectives,depute,1,modules/cda/classes/Components/Sections/ANS/PlansOfCare/CDASectionFRDirectivesAnticipees.php
+modules/cda/classes/Components/Sections/IHE/ReasonsForCare/CDASectionReasonForReferral.php,CDASectionReasonForReferral,depute,1,modules/cda/classes/Components/Sections/ANS/ReasonsForCare/CDASectionFRRaisonRecommandationNonCode.php
+modules/cda/classes/Components/Sections/IHE/RelevantStudies/CDASectionResults.php,CDASectionResults,depute,1,modules/cda/classes/Components/Sections/ANS/RelevantStudies/CDASectionFRResultatsExamensNonCode.php
+modules/cda/classes/Controllers/Legacy/CDAControllerLegacy.php,CDAControllerLegacy,depute,1,includes/legacy_actions.php
+modules/cda/classes/Documents/CCDADocumentLDLEES.php,CCDADocumentLDLEES,depute,1,modules/cda/classes/Levels/Level3/ANS/CCDALdlEes.php
+modules/cda/classes/Documents/CCDADocumentLDLSES.php,CCDADocumentLDLSES,depute,1,modules/cda/classes/Levels/Level3/ANS/CCDALdlSes.php
+modules/cda/classes/Documents/CCDADocumentVSM.php,CCDADocumentVSM,depute,1,modules/cda/classes/Levels/Level3/ANS/CCDAVsm.php
+modules/cda/classes/Documents/CCDADocumentVaccinationNote.php,CCDADocumentVaccinationNote,depute,1,modules/cda/classes/Levels/Level3/ANS/CCDAVaccinationNote.php
+modules/cda/classes/Exception/CCDAException.php,CCDAException,depute,5,modules/cda/classes/CCDADomDocument.php | modules/cda/classes/CCDAFactory.php | modules/cda/classes/CCDAPOCD_HD000040.php | modules/cda/classes/COperatorCDA.php | modules/cda/classes/Parser/CCDAParserFactory.php
+modules/cda/classes/Exception/CCDAExceptionLevel1.php,CCDAExceptionLevel1,depute,1,?modules/cda/locales/fr.php
+modules/cda/classes/Handle/CCDAHandle.php,CCDAHandle,depute,3,modules/cda/classes/CCDAFactory.php | modules/cda/classes/CCDAPOCD_HD000040.php | modules/cda/classes/Parser/CCDAParserFactory.php
+modules/cda/classes/Handle/CCDAHandleLevel1.php,CCDAHandleLevel1,depute,1,modules/cda/classes/Levels/Level1/CCDALevel1.php
+modules/cda/classes/Handle/CCDAMeta.php,CCDAMeta,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Handle/CCDAMetaDocumentationOf.php,CCDAMetaDocumentationOf,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Handle/CCDAMetaOrder.php,CCDAMetaOrder,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Handle/CCDAMetaParticipant.php,CCDAMetaParticipant,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Handle/CCDAMetaTypeOfCare.php,CCDAMetaTypeOfCare,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Handle/CCDAMetaTypeOfCareParticipant.php,CCDAMetaTypeOfCareParticipant,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Handle/Level3/ANS/CCDAHandleCRLDLSES.php,CCDAHandleCRLDLSES,depute,1,modules/cda/classes/Levels/Level3/ANS/CCDALdlSes.php
+modules/cda/classes/Handle/Level3/CCDAHandleLevel3.php,CCDAHandleLevel3,depute,1,modules/cda/classes/Handle/Level3/ANS/CCDAHandleCRLDLSES.php
+modules/cda/classes/Levels/Level1/ANS/CCDAANS.php,CCDAANS,depute,2,modules/cda/tests/Unit/Structure/CDAPOCD_MT000040_ClinicalDocumentTest.php | modules/dPfiles/classes/Controllers/Legacy/CDocumentItemController.php
+modules/cda/classes/Levels/Level1/CCDADmp.php,CCDADmp,depute,1,modules/cda/classes/Documents/CCDADocumentCDA.php
+modules/cda/classes/Levels/Level1/CCDALevel1.php,CCDALevel1,depute,3,modules/cda/classes/CCDAFactory.php | modules/cda/classes/Documents/CCDADocumentCDA.php | modules/cda/classes/Parser/CCDAParserFactory.php
+modules/cda/classes/Levels/Level3/ANS/CCDAANS.php,CCDAANS,depute,2,modules/cda/tests/Unit/Structure/CDAPOCD_MT000040_ClinicalDocumentTest.php | modules/dPfiles/classes/Controllers/Legacy/CDocumentItemController.php
+modules/cda/classes/Levels/Level3/ANS/CCDALdlEes.php,CCDALdlEes,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Levels/Level3/ANS/CCDALdlSes.php,CCDALdlSes,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Levels/Level3/ANS/CCDAVaccinationNote.php,CCDAVaccinationNote,depute,1,modules/cda/locales/fr.php
+modules/cda/classes/Levels/Level3/ANS/CCDAVsm.php,CCDAVsm,depute,2,modules/cda/classes/CCdaTools.php | modules/cda/locales/fr.php
+modules/cda/classes/Levels/Level3/CCDALevel3.php,CCDALevel3,depute,3,modules/cda/classes/CCDAFactory.php | modules/cda/classes/Documents/CCDADocumentCDA.php | modules/dPfiles/preview_files.php
+modules/cda/controllers/ajax_manage_base64.php,ajax_manage_base64,depute,1,modules/cda/javascript/ccda.js
+modules/cda/templates/vw_base64.tpl,vw_base64,depute,2,modules/cda/classes/CTabsCda.php | ?modules/cda/locales/fr.php
+modules/cda/templates/vw_manage_base64.tpl,vw_manage_base64,depute,1,modules/cda/controllers/ajax_manage_base64.php
+modules/cda/vw_base64.php,vw_base64,depute,2,modules/cda/classes/CTabsCda.php | ?modules/cda/locales/fr.php
+modules/dPbloc/javascript/multiSalle.js,multiSalle,depute,2,?modules/dPbloc/templates/vw_edit_interventions.tpl | ?modules/dPbloc/templates/vw_multi_salle.tpl
+modules/dPcabinet/classes/CBonAPayer.php,CBonAPayer,depute,2,?modules/dPcabinet/classes/CConsultation.php | modules/dPcabinet/locales/fr.php
+modules/dPcabinet/classes/CSlot.php,CSlot,depute,5,?modules/dPcabinet/templates/inc_configure_actions.tpl | ?modules/dPcabinet/classes/CConsultation.php | ?modules/dPcabinet/classes/CPlageconsult.php | modules/dPcabinet/locales/fr.php | modules/dPcabinet/tests/Unit/SlotServiceTest.php
+modules/dPcabinet/classes/Controllers/Legacy/CPlageconsultLegacyController.php,CPlageconsultLegacyController,depute,1,includes/legacy_actions.php
+modules/dPcabinet/classes/Controllers/Legacy/CSlotLegacyController.php,CSlotLegacyController,depute,1,includes/legacy_actions.php
+modules/dPcabinet/classes/PlanningConsultImpressionService.php,PlanningConsultImpressionService,depute,2,modules/dPcabinet/print_plages.php | modules/dPcabinet/tests/Unit/PlanningConsultImpressionServiceTest.php
+modules/dPcabinet/classes/PlanningConsultService.php,PlanningConsultService,depute,4,modules/dPcabinet/ajax_vw_journee_new.php | modules/dPcabinet/ajax_vw_planning.php | modules/dPcabinet/print_plages.php | modules/dPcabinet/tests/Unit/PlanningConsultServiceTest.php
+modules/dPcabinet/classes/PlanningConsultSlotService.php,PlanningConsultSlotService,depute,2,modules/dPcabinet/classes/PlanningConsultImpressionService.php | modules/dPcabinet/classes/PlanningConsultService.php
+modules/dPcabinet/classes/SlotService.php,SlotService,depute,2,modules/dPcabinet/classes/CConsultation.php | modules/dPcabinet/classes/CPlageconsult.php
+modules/dPcabinet/classes/Vaccination/CInjection.php,CInjection,depute,5,?modules/dPcabinet/templates/vaccination/inc_list_injections.tpl | ?modules/dPcabinet/templates/vaccination/print_injection.tpl | modules/dPcabinet/javascript/vaccination.js | modules/dPcabinet/ajax_edit_other_vaccinations.php | modules/dPcabinet/ajax_edit_repeat_vaccination.php
+modules/dPcabinet/javascript/slot.js,slot,depute,5,?modules/astreintes/templates/inc_edit_plage_astreinte.tpl | ?modules/dPcabinet/templates/edit_planning.tpl | ?modules/dPcabinet/templates/inc_configure_actions.tpl | modules/dPcabinet/templates/inc_list_next_slots.tpl | modules/dPcabinet/templates/inc_next_slots.tpl
+modules/dPcabinet/templates/inc_infos_consultation.tpl,inc_infos_consultation,depute,1,modules/soins/templates/inc_vw_suivi_clinique.tpl
+modules/dPcabinet/templates/inc_ngap_autocomplete.tpl,inc_ngap_autocomplete,depute,1,modules/dPcabinet/ajax_ngap_autocomplete.php
+modules/dPcabinet/templates/inc_show_slots.tpl,inc_show_slots,depute,1,modules/dPcabinet/classes/Controllers/Legacy/CPlageconsultLegacyController.php
+modules/dPcabinet/templates/vaccination/vw_read_datamatrix_vaccin.tpl,vw_read_datamatrix_vaccin,depute,1,modules/dPcabinet/classes/Controllers/Legacy/DatamatrixVaccinController.php
+modules/dPcabinet/templates/vaccination/vw_vaccins.tpl,vw_vaccins,depute,1,modules/dPcabinet/ajax_vw_vaccins.php
+modules/dPcabinet/templates/vw_replay_slot.tpl,vw_replay_slot,depute,1,modules/dPcabinet/classes/Controllers/Legacy/CSlotLegacyController.php
+modules/dPcabinet/tests/Fixtures/PlanningConsultImpressionServiceFixtures.php,PlanningConsultImpressionServiceFixtures,depute,1,modules/dPcabinet/tests/Unit/PlanningConsultImpressionServiceTest.php
+modules/dPcabinet/tests/Fixtures/PlanningConsultServiceFixtures.php,PlanningConsultServiceFixtures,depute,1,modules/dPcabinet/tests/Unit/PlanningConsultServiceTest.php
+modules/dPccam/classes/Controllers/Legacy/CcamLegacyController.php,CcamLegacyController,depute,1,includes/legacy_actions.php
+modules/dPccam/classes/Controllers/Legacy/CodageLegacyController.php,CodageLegacyController,depute,1,includes/legacy_actions.php
+modules/dPccam/classes/Controllers/Legacy/DevisLegacyController.php,DevisLegacyController,depute,1,includes/legacy_actions.php
+modules/dPccam/classes/Controllers/Legacy/FavorisLegacyController.php,FavorisLegacyController,depute,1,includes/legacy_actions.php
+modules/dPccam/classes/Controllers/Legacy/FraisDiversLegacyController.php,FraisDiversLegacyController,depute,1,includes/legacy_actions.php
+modules/dPccam/classes/Controllers/Legacy/NgapLegacyController.php,NgapLegacyController,depute,1,includes/legacy_actions.php
+modules/dPcim10/css/main.css,main,depute,5,modules/admin/templates/change_password.tpl | modules/admin/templates/change_password_legacy.tpl | ?modules/admin/templates/edit_kerberos_ldap_identifier.tpl | ?modules/admin/templates/edit_ldap_source.tpl | ?modules/admin/templates/edit_perms.tpl
+modules/dPcim10/templates/inc_outils_cim10.tpl,inc_outils_cim10,depute,1,modules/dPcim10/templates/configure.tpl
+modules/dPcompteRendu/classes/Controllers/Legacy/CCompteRenduController.php,CCompteRenduController,depute,2,modules/dPcompteRendu/controllers/do_pack_multi_aed.php | includes/legacy_actions.php
+modules/dPcompteRendu/templates/inc_deliveries.tpl,inc_deliveries,depute,2,modules/dPcompteRendu/templates/CCompteRendu_view.tpl | modules/dPfiles/templates/CFile_view.tpl
+modules/dPdeveloppement/templates/inc_quality_thumbnail_tester.tpl,inc_quality_thumbnail_tester,depute,1,modules/dPdeveloppement/ajax_thumbnails_quality.php
+modules/dPfacturation/classes/Controllers/Legacy/FactureLegacyController.php,FactureLegacyController,depute,1,includes/legacy_actions.php
+modules/dPfacturation/classes/FacturePrintService.php,FacturePrintService,depute,1,modules/dPfacturation/print_facture.php
+modules/dPfacturation/javascript/MailFacture.js,MailFacture,depute,1,?modules/dPfacturation/templates/view_send_facture_mail.tpl
+modules/dPfacturation/templates/view_send_facture_mail.tpl,view_send_facture_mail,depute,1,modules/dPfacturation/classes/Controllers/Legacy/FactureLegacyController.php
+modules/dPfiles/classes/MailReceiverService.php,MailReceiverService,depute,3,modules/dPcompteRendu/ajax_edit_correspondants_courrier.php | modules/dPcompteRendu/controllers/do_modele_aed.php | modules/dPfiles/classes/CDocumentItem.php
+modules/dPfiles/templates/inc_vw_files_search_results.tpl,inc_vw_files_search_results,depute,1,modules/dPfiles/classes/Controllers/Legacy/CFilesExplorerLegacyController.php
+modules/dPfiles/templates/vw_files_explorer.tpl,vw_files_explorer,depute,5,modules/dPfiles/classes/CTabsFiles.php | modules/dPfiles/classes/Controllers/Legacy/CFilesExplorerLegacyController.php | ?modules/dPfiles/locales/fr.php | ?modules/dPfiles/locales/it.php | includes/legacy_actions.php
+modules/dPfiles/tests/Fixtures/ReadFileFixtures.php,ReadFileFixtures,depute,1,modules/dPfiles/tests/Unit/ReadFileTest.php
+modules/dPhospi/templates/vw_list_stats_uf.tpl,vw_list_stats_uf,depute,2,modules/dPhospi/templates/vw_stats_uf.tpl | modules/dPhospi/vw_stats_uf.php
+modules/dPhospi/tests/Fixtures/HospitalisationFixtures.php,HospitalisationFixtures,depute,3,modules/dPhospi/tests/Unit/PlacementsTest.php | modules/dPhospi/tests/Unit/Repository/ServiceRepositoryTest.php | modules/dPhospi/tests/Unit/Services/RegulationServiceTest.php
+modules/dPpatients/classes/CIdentityProofType.php,CIdentityProofType,depute,5,?modules/dPpatients/classes/CPatient.php | ?modules/dPpatients/classes/CSourceIdentite.php | modules/dPpatients/classes/Controllers/Legacy/CSourceIdentiteController.php | modules/dPpatients/classes/PatientStatus.php | modules/dPpatients/locales/fr.php
+modules/dPpatients/classes/Constants/CAbstractConstant.php,CAbstractConstant,depute,5,modules/api/classes/CGraphApexcharts.php | ?modules/api/locales/fr.php | ?modules/api/locales/it.php | ?modules/dPcabinet/ajax_timeline_appointment.php | modules/dPpatients/locales/fr.php
+modules/dPpatients/classes/Constants/CActionReport.php,CActionReport,depute,2,modules/api/classes/CAPITiers.php | modules/dPpatients/classes/Constants/CConstantReleve.php
+modules/dPpatients/classes/Constants/CConstantAlert.php,CConstantAlert,depute,2,modules/dPpatients/locales/fr.php | modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CConstantException.php,CConstantException,depute,3,?core/classes/Module/Requirements/CRequirementsException.php | ?modules/dPpatients/locales/fr.php | ?modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CConstantFilter.php,CConstantFilter,depute,1,modules/dPpatients/classes/Constants/CConstantReleve.php
+modules/dPpatients/classes/Constants/CConstantReleve.php,CConstantReleve,depute,2,modules/dPpatients/locales/fr.php | modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CConstantSpec.php,CConstantSpec,depute,2,modules/dPpatients/locales/fr.php | modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CDateTimeInterval.php,CDateTimeInterval,depute,4,?modules/dPpatients/resources/ConstantSpec.xml | modules/dPpatients/classes/CSetupPatients.php | modules/dPpatients/locales/fr.php | modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CInterval.php,CInterval,depute,3,modules/dPpatients/classes/Constants/CDateTimeInterval.php | modules/dPpatients/classes/Constants/CStateInterval.php | modules/dPpatients/classes/Constants/CValueInterval.php
+modules/dPpatients/classes/Constants/CReleveComment.php,CReleveComment,depute,1,modules/dPpatients/locales/fr.php
+modules/dPpatients/classes/Constants/CReleveRepository.php,CReleveRepository,depute,1,modules/dPpatients/classes/Constants/CConstantReleve.php
+modules/dPpatients/classes/Constants/CStateInterval.php,CStateInterval,depute,4,?modules/dPpatients/resources/ConstantSpec.xml | modules/dPpatients/classes/CSetupPatients.php | modules/dPpatients/locales/fr.php | modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CValueEnum.php,CValueEnum,depute,3,modules/dPpatients/classes/CSetupPatients.php | modules/dPpatients/locales/fr.php | modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CValueFloat.php,CValueFloat,depute,3,?modules/dPpatients/resources/ConstantSpec.xml | modules/dPpatients/classes/CSetupPatients.php | modules/dPpatients/locales/fr.php
+modules/dPpatients/classes/Constants/CValueInt.php,CValueInt,depute,4,?modules/dPpatients/resources/ConstantSpec.xml | modules/dPpatients/classes/CSetupPatients.php | modules/dPpatients/locales/fr.php | modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CValueInterval.php,CValueInterval,depute,4,?modules/dPpatients/resources/ConstantSpec.xml | modules/dPpatients/classes/CSetupPatients.php | modules/dPpatients/locales/fr.php | ?modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Constants/CValueText.php,CValueText,depute,3,modules/dPpatients/classes/CSetupPatients.php | modules/dPpatients/locales/fr.php | modules/dPpatients/locales/it.php
+modules/dPpatients/classes/Controllers/Legacy/CDossierMedicalController.php,CDossierMedicalController,depute,1,includes/legacy_actions.php
+modules/dPpatients/classes/Controllers/Legacy/CEvenementPatientLegacyController.php,CEvenementPatientLegacyController,depute,1,includes/legacy_actions.php
+modules/dPpatients/classes/Controllers/Legacy/IdentityProofTypeController.php,IdentityProofTypeController,depute,1,includes/legacy_actions.php
+modules/dPpatients/classes/Services/SourceIdentityFilesService.php,SourceIdentityFilesService,depute,1,modules/dPpatients/classes/Controllers/Legacy/CPatientMaintenanceLegacyController.php
+modules/dPpatients/classes/Updators/IdentityProofTypeUpdator.php,IdentityProofTypeUpdator,depute,1,modules/dPpatients/classes/CSetupPatients.php
+modules/dPpatients/javascript/constantSpec.js,constantSpec,depute,1,?modules/dPpatients/resources/ConstantSpec.xml
+modules/dPpatients/javascript/dashboard.js,dashboard,depute,5,?modules/dPadmissions/templates/inc_vw_admissions.tpl | ?modules/dPadmissions/templates/inc_vw_preadmissions.tpl | ?modules/dPadmissions/templates/inc_vw_sorties.tpl | ?modules/importTools/templates/vw_migration.tpl | ?modules/importTools/templates/vw_migration_tools.tpl
+modules/dPpatients/javascript/maintenanceConfig.js,maintenanceConfig,depute,2,?modules/dPpatients/templates/maintenance/CPatient.tpl | ?modules/dPpatients/templates/maintenance/CSourceIdentite.tpl
+modules/dPpatients/templates/identity_proof_type/edit.tpl,edit,depute,5,?modules/admin/templates/configure.tpl | ?modules/admin/templates/edit_kerberos_ldap_identifier.tpl | ?modules/admin/templates/edit_ldap_source.tpl | ?modules/admin/templates/edit_perms.tpl | modules/admin/templates/edit_prefs.tpl
+modules/dPpatients/templates/identity_proof_type/filters.tpl,filters,depute,5,?modules/bloodSalvage/templates/vw_stats.tpl | ?modules/dPboard/templates/vw_exams_comp.tpl | ?modules/dPboard/templates/vw_list_exams_comp.tpl | modules/dPboard/templates/vw_sejours_interventions.tpl | modules/dPboard/templates/vw_stats_consultations.tpl
+modules/dPpatients/templates/identity_proof_type/index.tpl,index,depute,5,?cli/conf/mysqlbackup.xml | ?modules/astreintes/templates/vw_planning_astreinte.tpl | ?modules/dPadmissions/templates/accueil_presentation_lines.tpl | ?modules/dPbloc/templates/horizontal_planning_style.tpl | ?modules/dPbloc/templates/inc_vw_planning_ressources.tpl
+modules/dPpatients/templates/identity_proof_type/list.tpl,list,depute,5,?modules/cda/resources/xsl/cda_l10n.xml | ?modules/cda/tests/Resources/Handle/Bio/bio_auto_presentable.xml | ?modules/dPpatients/resources/ConstantSpec.xml | ?modules/admin/templates/change_password.tpl | ?modules/admin/templates/change_password_legacy.tpl
+modules/dPpatients/templates/inc_get_consultation_categorie.tpl,inc_get_consultation_categorie,depute,1,modules/dPpatients/ajax_get_consultation_categorie.php
+modules/dPpatients/templates/inc_lieu_naissance.tpl,inc_lieu_naissance,depute,2,modules/dPpatients/templates/CPatient_complete.tpl | modules/dPpatients/templates/inc_vw_identite_patient.tpl
+modules/dPpatients/templates/inc_table_constant_spec.tpl,inc_table_constant_spec,depute,1,modules/dPpatients/templates/vw_constant_spec.tpl
+modules/dPpatients/templates/inc_tooltip_patient_status.tpl,inc_tooltip_patient_status,depute,1,modules/dPpatients/templates/inc_status_icon.tpl
+modules/dPpatients/templates/inc_vw_consentement.tpl,inc_vw_consentement,depute,1,modules/dPpatients/classes/Controllers/Legacy/CConsentementController.php
+modules/dPpatients/templates/inc_vw_evenements_patient.tpl,inc_vw_evenements_patient,depute,1,modules/dPpatients/templates/vw_evenements_rappel.tpl
+modules/dPpatients/templates/maintenance/expired_identity_files.tpl,expired_identity_files,depute,2,modules/dPpatients/classes/Controllers/Legacy/CPatientMaintenanceLegacyController.php | ?modules/dPpatients/locales/fr.php
+modules/dPpatients/templates/patient_state/inc_filter_patient_state.tpl,inc_filter_patient_state,depute,1,modules/dPpatients/templates/patient_state/vw_patient_state.tpl
+modules/dPpatients/templates/patient_state/inc_stats_patient_state.tpl,inc_stats_patient_state,depute,1,modules/dPpatients/classes/Controllers/Legacy/PatientStateStatsController.php
+modules/dPpatients/templates/vw_constant_spec.tpl,vw_constant_spec,depute,2,?modules/dPpatients/locales/fr.php | ?modules/dPpatients/locales/it.php
+modules/dPpatients/templates/vw_datamatrix_ins.tpl,vw_datamatrix_ins,depute,5,modules/dPcabinet/templates/inc_header_fiche_anesth.tpl | modules/dPcabinet/templates/inc_print_futurs_rdv.tpl | modules/dPcabinet/templates/print_fiche1.tpl | modules/dPcabinet/templates/print_inc_dossier_medical.tpl | modules/dPcabinet/templates/view_consultation.tpl
+modules/dPpatients/templates/vw_edit_groupe_rhesus.tpl,vw_edit_groupe_rhesus,depute,1,modules/dPpatients/classes/Controllers/Legacy/CDossierMedicalController.php
+modules/dPpatients/templates/vw_evenements_rappel.tpl,vw_evenements_rappel,depute,5,?modules/dPcabinet/templates/preferences.tpl | modules/dPpatients/javascript/evenement_patient.js | modules/dPcabinet/classes/CTabsCabinet.php | ?modules/dPcabinet/locales/de.php | ?modules/dPcabinet/locales/fr.php
+modules/dPpatients/templates/vw_read_datamatrix_ins.tpl,vw_read_datamatrix_ins,depute,1,modules/dPpatients/classes/Controllers/Legacy/CPatientINSController.php
+modules/dPpatients/templates/vw_test_constant.tpl,vw_test_constant,depute,2,?modules/dPpatients/locales/fr.php | ?modules/dPpatients/locales/it.php
+modules/dPplanningOp/templates/inc_form_sejour_annule.tpl,inc_form_sejour_annule,depute,2,modules/dPplanningOp/templates/inc_form_sejour.tpl | modules/dPplanningOp/templates/vw_edit_planning.tpl
+modules/dPplanningOp/templates/inc_planning_sejour.tpl,inc_planning_sejour,depute,3,modules/dPplanningOp/templates/vw_planning_sejour.tpl | modules/dPplanningOp/ajax_vw_planning_sejour.php | modules/ssr/ajax_planning_sejour.php
+modules/dPpmsi/classes/Controllers/Legacy/CPMSILegacyController.php,CPMSILegacyController,depute,1,includes/legacy_actions.php
+modules/dPpmsi/classes/Controllers/Legacy/CPMSIRelanceLegacyController.php,CPMSIRelanceLegacyController,depute,1,includes/legacy_actions.php
+modules/dPpmsi/classes/PMSIService.php,PMSIService,depute,1,modules/dPpmsi/classes/Controllers/Legacy/CPMSILegacyController.php
+modules/dPpmsi/classes/PmsiExporter.php,PmsiExporter,depute,1,modules/dPpmsi/classes/Controllers/Legacy/CPMSILegacyController.php
+modules/dPpmsi/classes/RelancePMSIService.php,RelancePMSIService,depute,1,modules/dPpmsi/classes/Controllers/Legacy/CPMSILegacyController.php
+modules/dPpmsi/classes/Services/PMSIRelanceService.php,PMSIRelanceService,depute,2,modules/dPpmsi/classes/Controllers/Legacy/CPMSILegacyController.php | modules/dPpmsi/classes/Controllers/Legacy/CPMSIRelanceLegacyController.php
+modules/dPsalleOp/classes/Controllers/Legacy/DailyCheckListController.php,DailyCheckListController,depute,1,includes/legacy_actions.php
+modules/dPsalleOp/classes/Controllers/Legacy/GestePeropController.php,GestePeropController,depute,1,includes/legacy_actions.php
+modules/dPsalleOp/classes/Repository/DailyCheckListGroupRepository.php,DailyCheckListGroupRepository,depute,1,modules/dPsalleOp/tests/Unit/Repository/DailyCheckListGroupRepositoryTest.php
+modules/dPsalleOp/templates/inc_vw_personnel_partogramme.tpl,inc_vw_personnel_partogramme,depute,1,modules/dPsalleOp/templates/inc_vw_anesth.tpl
+modules/dPsalleOp/templates/inc_vw_tools.tpl,inc_vw_tools,depute,1,modules/dPsalleOp/templates/configure.tpl
+modules/dPstats/classes/Controllers/Legacy/CStatsLegacyController.php,CStatsLegacyController,depute,1,includes/legacy_actions.php
+modules/dPstock/templates/inc_configure.tpl,inc_configure,depute,1,modules/dPstock/templates/configure.tpl
+modules/dPstock/templates/inc_configure_tools.tpl,inc_configure_tools,depute,1,modules/dPstock/templates/configure.tpl
+modules/dPstock/templates/inc_list_product_autocomplete.tpl,inc_list_product_autocomplete,depute,1,modules/dPstock/httpreq_product_list_autocomplete.php
+modules/dPstock/templates/inc_order_form.tpl,inc_order_form,depute,1,modules/dPstock/templates/vw_order_form.tpl
+modules/dPurgences/classes/ExportRPU.php,ExportRPU,depute,3,modules/dPurgences/classes/Controllers/Legacy/CRPUController.php | modules/dPurgences/classes/Controllers/Legacy/ConfigureController.php | ?modules/dPurgences/locales/fr.php
+modules/eai/classes/CInteropActorFactory.php,CInteropActorFactory,depute,5,modules/eai/ajax_create_all_movement.php | modules/eai/ajax_send_messages.php | modules/eai/classes/CInteropReceiverFactory.php | modules/eai/tests/Unit/CInteropReceiverFactoryTest.php | modules/fhir/ajax_fhir_resources.php
+modules/eai/classes/CInteropSenderFactory.php,CInteropSenderFactory,depute,1,modules/eai/classes/CInteropActorFactory.php
+modules/eai/classes/Controllers/Legacy/CActorControllerLegacy.php,CActorControllerLegacy,depute,2,modules/eai/tests/Unit/Configurations/CEAIConfigurationTest.php | includes/legacy_actions.php
+modules/eai/classes/Controllers/Legacy/CExchangeControllerLegacy.php,CExchangeControllerLegacy,depute,1,includes/legacy_actions.php
+modules/eai/classes/Controllers/Legacy/CMessageSupportedControllerLegacy.php,CMessageSupportedControllerLegacy,depute,1,includes/legacy_actions.php
+modules/eai/purge_multiple_files.php,purge_multiple_files,depute,1,modules/eai/templates/inc_tools_purge.tpl
+modules/eai/templates/inc_container_active_message_supported_form.tpl,inc_container_active_message_supported_form,depute,1,modules/eai/templates/inc_messages_supported.tpl
+modules/eai/templates/inc_message_supported_section_header.tpl,inc_message_supported_section_header,depute,1,modules/eai/templates/inc_messages_supported.tpl
+modules/eai/templates/inc_message_supported_section_version.tpl,inc_message_supported_section_version,depute,3,modules/eai/classes/Controllers/Legacy/CMessageSupportedControllerLegacy.php | modules/eai/templates/inc_message_supported_section_header.tpl | modules/fhir/templates/inc_message_supported_section_header.tpl
+modules/eai/templates/report/inc_report_item.tpl,inc_report_item,depute,1,modules/eai/templates/report/inc_report.tpl
+modules/eai/templates/report/inc_report_item_mail.tpl,inc_report_item_mail,depute,1,modules/eai/templates/report/inc_report_mail.tpl
+modules/fhir/classes/Actors/CInteropActorFHIRTrait.php,CInteropActorFHIRTrait,depute,1,modules/fhir/classes/Actors/CReceiverFHIR.php
+modules/fhir/classes/Actors/CSenderFHIR.php,CSenderFHIR,depute,2,modules/fhir/classes/Resources/CFHIRResource.php | modules/fhir/classes/Resources/R4/CapabilityStatement/CFHIRResourceCapabilityStatement.php
+modules/fhir/classes/Actors/IActorFHIR.php,IActorFHIR,depute,2,modules/fhir/classes/Actors/CReceiverFHIR.php | modules/fhir/classes/Resources/CFHIRResource.php
+modules/fhir/classes/CConfigurationFHIR.php,CConfigurationFHIR,depute,1,modules/fhir/templates/configure.tpl
+modules/fhir/classes/ClassMap/DelegatedMap.php,DelegatedMap,depute,1,modules/fhir/classes/ClassMap/FHIRClassMap.php
+modules/fhir/classes/ClassMap/FHIRClassMap.php,FHIRClassMap,depute,5,modules/fhir/classes/CExchangeFHIR.php | modules/fhir/classes/Datatypes/Complex/CFHIRDataTypeReference.php | modules/fhir/classes/Profiles/CFHIR.php | modules/fhir/classes/Resources/R4/CFHIRDefinition.php | modules/fhir/classes/Serializers/CFHIRParser.php
+modules/fhir/classes/ClassMap/FhirClassMapBuilder.php,FhirClassMapBuilder,depute,1,modules/fhir/classes/ClassMap/FHIRClassMap.php
+modules/fhir/classes/ClassMap/ObjectMap.php,ObjectMap,depute,4,modules/fhir/classes/ClassMap/DelegatedMap.php | modules/fhir/classes/ClassMap/ProfileMap.php | modules/fhir/classes/ClassMap/ResourceMap.php | modules/fhir/classes/ClassMap/VersionMap.php
+modules/fhir/classes/ClassMap/ProfileMap.php,ProfileMap,depute,1,modules/fhir/classes/ClassMap/FHIRClassMap.php
+modules/fhir/classes/ClassMap/ResourceMap.php,ResourceMap,depute,1,modules/fhir/classes/ClassMap/FHIRClassMap.php
+modules/fhir/classes/ClassMap/VersionMap.php,VersionMap,depute,1,modules/fhir/classes/ClassMap/FHIRClassMap.php
+modules/fhir/classes/Client/CFHIRClient.php,CFHIRClient,depute,1,modules/fhir/classes/Client/Response/Response.php
+modules/fhir/classes/Client/Response/Envelope.php,Envelope,depute,3,?modules/system/classes/CHTTPTunnel.php | ?modules/webservices/classes/CMbSOAPClient.php | ?modules/xds/classes/CXDSRequest.php
+modules/fhir/classes/Client/Response/Middleware/ErrorHandlerMiddleware.php,ErrorHandlerMiddleware,depute,1,modules/fhir/classes/Client/Response/Response.php
+modules/fhir/classes/Client/Response/Middleware/MiddlewareInterface.php,MiddlewareInterface,depute,1,modules/fhir/classes/Client/Response/Response.php
+modules/fhir/classes/Client/Response/Middleware/ResourceLocatorMiddleware.php,ResourceLocatorMiddleware,depute,1,modules/fhir/classes/Client/Response/Response.php
+modules/fhir/classes/Client/Response/Middleware/ResourceParserMiddleware.php,ResourceParserMiddleware,depute,1,modules/fhir/classes/Client/Response/Response.php
+modules/fhir/classes/Client/Response/Middleware/ResourceRetrieverMiddleware.php,ResourceRetrieverMiddleware,depute,1,modules/fhir/classes/Client/Response/Response.php
+modules/fhir/classes/Client/Response/Middleware/Stack/StackInterface.php,StackInterface,depute,6,modules/fhir/classes/Client/Response/Middleware/ErrorHandlerMiddleware.php | modules/fhir/classes/Client/Response/Middleware/MiddlewareInterface.php | modules/fhir/classes/Client/Response/Middleware/ResourceLocatorMiddleware.php | modules/fhir/classes/Client/Response/Middleware/ResourceParserMiddleware.php | modules/fhir/classes/Client/Response/Middleware/ResourceRetrieverMiddleware.php
+modules/fhir/classes/Client/Response/Middleware/Stack/StackMiddleware.php,StackMiddleware,depute,1,modules/fhir/classes/Client/Response/Response.php
+modules/fhir/classes/Client/Response/Response.php,Response,depute,5,?modules/cda/resources/xsl/cda_l10n.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageADRA19.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageDOCT12.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageEARU08.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageMFKM01.xml
+modules/fhir/classes/Contracts/Mapping/R4/AppointmentMappingInterface.php,AppointmentMappingInterface,depute,1,modules/fhir/classes/Resources/R4/Appointment/CFHIRResourceAppointment.php
+modules/fhir/classes/Contracts/Mapping/R4/DeviceMappingInterface.php,DeviceMappingInterface,depute,1,modules/fhir/classes/Resources/R4/Device/Mapper/Device.php
+modules/fhir/classes/Contracts/Mapping/R4/EncounterMappingInterface.php,EncounterMappingInterface,depute,1,modules/fhir/classes/Resources/R4/Encounter/CFHIRResourceEncounter.php
+modules/fhir/classes/Contracts/Mapping/R4/ObservationMappingInterface.php,ObservationMappingInterface,depute,1,modules/fhir/classes/Resources/R4/Observation/Mapper/Observation.php
+modules/fhir/classes/Contracts/Mapping/R4/OrganizationMappingInterface.php,OrganizationMappingInterface,depute,1,modules/fhir/classes/Resources/R4/Organization/CFHIRResourceOrganization.php
+modules/fhir/classes/Contracts/Mapping/R4/PatientMappingInterface.php,PatientMappingInterface,depute,1,modules/fhir/classes/Resources/R4/Patient/CFHIRResourcePatient.php
+modules/fhir/classes/Contracts/Mapping/R4/PractitionerMappingInterface.php,PractitionerMappingInterface,depute,2,?modules/fhir/classes/Resources/R4/Practitioner/CFHIRResourcePractitioner.php | modules/fhir/classes/Resources/R4/Practitioner/Profiles/InteropSante/CFHIRResourcePractitionerFR.php
+modules/fhir/classes/Contracts/Mapping/R4/ScheduleMappingInterface.php,ScheduleMappingInterface,depute,2,modules/fhir/classes/Resources/R4/Schedule/CFHIRResourceSchedule.php | modules/fhir/classes/Resources/R4/Schedule/Mapper/Schedule.php
+modules/fhir/classes/Contracts/Mapping/R4/SlotMappingInterface.php,SlotMappingInterface,depute,2,modules/fhir/classes/Resources/R4/Slot/CFHIRResourceSlot.php | modules/fhir/classes/Resources/R4/Slot/Mapper/Slot.php
+modules/fhir/classes/Controllers/CFHIRAppFineController.php,CFHIRAppFineController,depute,2,modules/fhir/config/routes/appFine_interactions.yml | includes/all_routes.yml
+modules/fhir/classes/Controllers/CFHIRController.php,CFHIRController,depute,5,core/tests/Unit/CControllerTest.php | modules/fhir/classes/Interactions/CFHIRInteractionHistory.php | modules/fhir/classes/Interactions/CFHIRInteractionSearch.php | modules/fhir/classes/Resources/CFHIRResource.php | modules/fhir/classes/Resources/R4/Bundle/CFHIRResourceBundle.php
+modules/fhir/classes/Controllers/CFHIRInteractionsController.php,CFHIRInteractionsController,depute,3,modules/fhir/config/routes/appFine_interactions.yml | modules/fhir/config/routes/interactions.yml | includes/all_routes.yml
+modules/fhir/classes/Controllers/CFHIROperationsController.php,CFHIROperationsController,depute,2,modules/fhir/config/routes/operations.yml | includes/all_routes.yml
+modules/fhir/classes/Controllers/Legacy/CLegacyFHIRController.php,CLegacyFHIRController,depute,2,?modules/fhir/locales/fr.php | includes/legacy_actions.php
+modules/fhir/classes/Datatypes/CFHIRDataTypeCanonical.php,CFHIRDataTypeCanonical,depute,5,modules/fhir/classes/Datatypes/Complex/Backbone/CapabilityStatement/CFHIRDataTypeCapabilityStatementOperation.php | modules/fhir/classes/Datatypes/Complex/Backbone/CapabilityStatement/CFHIRDataTypeCapabilityStatementResource.php | modules/fhir/classes/Datatypes/Complex/Backbone/CapabilityStatement/CFHIRDataTypeCapabilityStatementRest.php | modules/fhir/classes/Datatypes/Complex/Backbone/CapabilityStatement/CFHIRDataTypeCapabilityStatementSearchParam.php | modules/fhir/classes/Datatypes/Complex/Backbone/ConceptMap/CFHIRDataTypeConceptMapDependsOn.php
+modules/fhir/classes/Datatypes/Complex/Backbone/AllergyIntolerance/CFHIRDataTypeAllergyIntoleranceReaction.php,CFHIRDataTypeAllergyIntoleranceReaction,depute,1,modules/fhir/classes/Resources/R4/AllergyIntolerance/CFHIRResourceAllergyIntolerance.php
+modules/fhir/classes/Datatypes/Complex/Backbone/Bundle/CFHIRDataTypeBundleEntry.php,CFHIRDataTypeBundleEntry,depute,2,modules/fhir/classes/Event/CFHIREvent.php | modules/fhir/classes/Resources/R4/Bundle/CFHIRResourceBundle.php
+modules/fhir/classes/Datatypes/Complex/Backbone/Bundle/CFHIRDataTypeBundleLink.php,CFHIRDataTypeBundleLink,depute,1,modules/fhir/classes/Resources/R4/Bundle/CFHIRResourceBundle.php
+modules/fhir/classes/Datatypes/Complex/Backbone/Bundle/CFHIRDataTypeBundleRequest.php,CFHIRDataTypeBundleRequest,depute,2,modules/fhir/classes/Event/CFHIREvent.php | modules/fhir/classes/Interactions/CFHIRInteractionHistory.php
+modules/fhir/classes/Datatypes/Complex/Backbone/Bundle/CFHIRDataTypeBundleResponse.php,CFHIRDataTypeBundleResponse,depute,1,?modules/fhir/classes/Datatypes/Complex/Backbone/Bundle/CFHIRDataTypeBundleEntry.php
+modules/fhir/classes/Datatypes/Complex/Backbone/Bundle/CFHIRDataTypeBundleSearch.php,CFHIRDataTypeBundleSearch,depute,1,?modules/fhir/classes/Datatypes/Complex/Backbone/Bundle/CFHIRDataTypeBundleEntry.php
+modules/fhir/classes/Datatypes/Complex/Backbone/Observation/CFHIRDataTypeObservationComponent.php,CFHIRDataTypeObservationComponent,depute,1,modules/fhir/classes/Resources/R4/Observation/CFHIRResourceObservation.php
+modules/fhir/classes/Event/CFHIREventSchedule.php,CFHIREventSchedule,depute,1,modules/fhir/classes/Event/CFHIREvent.php
+modules/fhir/classes/Exception/CFHIRExceptionForbidden.php,CFHIRExceptionForbidden,depute,2,modules/fhir/classes/Interactions/CFHIRInteractionRead.php | modules/fhir/classes/Resources/CFHIRResource.php
+modules/fhir/classes/Exception/CFHIRExceptionInformational.php,CFHIRExceptionInformational,depute,1,modules/fhir/classes/Actors/CReceiverFHIR.php
+modules/fhir/classes/Exception/CFHIRExceptionNotSupported.php,CFHIRExceptionNotSupported,depute,4,modules/fhir/classes/Interactions/CFHIRInteraction.php | modules/fhir/classes/Resources/R4/Bundle/CFHIRResourceBundle.php | modules/fhir/classes/Resources/R4/DocumentReference/Profiles/ANS/CFHIRResourceDocumentReferenceCdL.php | modules/fhir/classes/Resources/R4/PractitionerRole/CFHIRResourcePractitionerRole.php
+modules/fhir/classes/Exception/CFHIRExceptionRequired.php,CFHIRExceptionRequired,depute,4,modules/fhir/classes/Interactions/CFHIRInteractionDelete.php | modules/fhir/classes/Interactions/CFHIRInteractionHistory.php | modules/fhir/classes/Interactions/CFHIRInteractionRead.php | modules/fhir/classes/Interactions/CFHIRInteractionUpdate.php
+modules/fhir/classes/Profiles/CFHIRANS.php,CFHIRANS,depute,5,modules/fhir/classes/CExchangeFHIR.php | modules/fhir/classes/Resources/R4/Bundle/Profiles/ANS/CDL/CFHIRResourceBundleCreationNoteCdL.php | modules/fhir/classes/Resources/R4/DocumentReference/Mapper/ANS/DocumentReferenceCdLDocumentItem.php | modules/fhir/classes/Resources/R4/DocumentReference/Profiles/ANS/CFHIRResourceDocumentReferenceCdL.php | modules/fhir/classes/Resources/R4/Practitioner/Profiles/ANS/CFHIRResourcePractitionerRASS.php
+modules/fhir/classes/Profiles/CFHIRAnnuaireSante.php,CFHIRAnnuaireSante,depute,5,modules/fhir/classes/CExchangeFHIR.php | modules/fhir/classes/Resources/R4/Practitioner/Profiles/ANS/CFHIRResourcePractitionerRASS.php | modules/fhir/classes/Resources/R4/PractitionerRole/Mapper/AnnuaireSante/PractitionerRoleMappingOrganizationalRassExercicePlace.php | modules/fhir/classes/Resources/R4/PractitionerRole/Mapper/AnnuaireSante/PractitionerRoleMappingOrganizationalRassMediusers.php | modules/fhir/classes/Resources/R4/PractitionerRole/Mapper/AnnuaireSante/PractitionerRoleProfessionalRassMedecin.php
+modules/fhir/classes/Profiles/CFHIRInteropSante.php,CFHIRInteropSante,depute,5,modules/fhir/classes/CExchangeFHIR.php | modules/fhir/classes/Resources/R4/Organization/Profiles/InteropSante/CFHIRResourceOrganizationFR.php | modules/fhir/classes/Resources/R4/Practitioner/Profiles/InteropSante/CFHIRResourcePractitionerFR.php | modules/fhir/classes/Resources/R4/RelatedPerson/Profiles/InteropSante/CFHIRResourceRelatedPersonFR.php | modules/fhir/locales/fr.php
+modules/fhir/classes/Profiles/CFHIRPHD.php,CFHIRPHD,depute,1,modules/fhir/classes/Resources/R4/Device/Profiles/PHD/CFHIRResourceDevicePHD.php
+modules/fhir/classes/Request/Api/CRequestFHIR.php,CRequestFHIR,depute,3,modules/fhir/classes/Controllers/CFHIRAppFineController.php | modules/fhir/classes/Controllers/CFHIRInteractionsController.php | modules/fhir/classes/Controllers/CFHIROperationsController.php
+modules/fhir/classes/Request/Api/CRequestFormats.php,CRequestFormats,depute,5,modules/fhir/ajax_request_fhir.php | modules/fhir/classes/Interactions/CFHIRInteraction.php | modules/fhir/classes/Request/CFHIRRequestJSON.php | modules/fhir/classes/Request/CFHIRRequestXML.php | modules/fhir/classes/Serializers/CFHIRParser.php
+modules/fhir/classes/Request/Api/CRequestInteraction.php,CRequestInteraction,depute,1,modules/fhir/classes/Controllers/CFHIRController.php
+modules/fhir/classes/Request/Api/CRequestResource.php,CRequestResource,depute,1,modules/fhir/classes/Controllers/CFHIRController.php
+modules/fhir/classes/Request/Api/CRequestSearch.php,CRequestSearch,depute,2,modules/fhir/classes/Request/Api/CRequestFHIR.php | ?modules/fhir/classes/Request/Api/CRequestInteraction.php
+modules/fhir/classes/Resources/R4/Appointment/Mapper/Appointment.php,Appointment,depute,5,modules/cda/resources/xsl/cda_l10n.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS12.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS13.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS14.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS15.xml
+modules/fhir/classes/Resources/R4/Appointment/Mapper/FrAppointment.php,FrAppointment,depute,1,?modules/fhir/locales/fr.php
+modules/fhir/classes/Resources/R4/Appointment/Profiles/InteropSante/CFHIRResourceAppointmentFR.php,CFHIRResourceAppointmentFR,depute,1,modules/fhir/classes/Resources/R4/Appointment/Mapper/FrAppointment.php
+modules/fhir/classes/Resources/R4/Device/Mapper/Device.php,Device,depute,5,modules/cda/resources/xsl/cda_l10n.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentIAM.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentOM1.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentORC.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentPCR.xml
+modules/fhir/classes/Resources/R4/Device/Mapper/PhdDevice.php,PhdDevice,depute,1,modules/fhir/classes/Resources/R4/Device/Profiles/PHD/CFHIRResourceDevicePHD.php
+modules/fhir/classes/Resources/R4/DocumentReference/Handle/DocumentReference.php,DocumentReference,depute,5,modules/fhir/templates/inc_list_result_MHD.tpl | modules/fhir/templates/inc_vw_CMHD.tpl | modules/fhir/ajax_request_fhir.php | modules/fhir/classes/Contracts/Mapping/R4/DocumentReferenceMappingInterface.php | modules/fhir/classes/Datatypes/Complex/Backbone/DocumentReference/CFHIRDataTypeDocumentReferenceContent.php
+modules/fhir/classes/Resources/R4/DocumentReference/Mapper/DocumentReference.php,DocumentReference,depute,5,modules/fhir/templates/inc_list_result_MHD.tpl | modules/fhir/templates/inc_vw_CMHD.tpl | modules/fhir/ajax_request_fhir.php | modules/fhir/classes/Contracts/Mapping/R4/DocumentReferenceMappingInterface.php | modules/fhir/classes/Datatypes/Complex/Backbone/DocumentReference/CFHIRDataTypeDocumentReferenceContent.php
+modules/fhir/classes/Resources/R4/Encounter/Mapper/Encounter.php,Encounter,depute,5,modules/cda/resources/xsl/cda_l10n.xml | ?modules/xds/resources/valuesets/typeCode.xml | modules/fhir/templates/inc_tests_resources.tpl | ?modules/hl7/templates/inc_vw_pam.tpl | ?modules/eai/locales/fr.php
+modules/fhir/classes/Resources/R4/Observation/Mapper/Observation.php,Observation,depute,5,modules/cda/resources/xsl/cda_l10n.xml | ?modules/cda/tests/Resources/Handle/Bio/electrophorese.xml | ?modules/hl7/resources/extensions/fra/v2_10/compositePRL.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageMFKM03.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageMFKM08.xml
+modules/fhir/classes/Resources/R4/Organization/Mapper/FrOrganization.php,FrOrganization,depute,1,modules/fhir/classes/Resources/R4/Organization/Profiles/InteropSante/CFHIRResourceOrganizationFR.php
+modules/fhir/classes/Resources/R4/Organization/Mapper/Organization.php,Organization,depute,5,modules/cda/resources/xsl/cda_l10n.xml | ?modules/hl7/resources/extensions/fra/v2_10/compositeXON.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentAFF.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentCDM.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentGT1.xml
+modules/fhir/classes/Resources/R4/Patient/Mapper/FrPatient.php,FrPatient,depute,1,?modules/fhir/locales/fr.php
+modules/fhir/classes/Resources/R4/Patient/Mapper/Patient.php,Patient,depute,5,?modules/cda/resources/xsl/cda_l10n.xml | ?modules/cda/tests/Resources/Handle/Bio/bio_auto_presentable.xml | ?modules/cda/tests/Resources/Handle/Bio/electrophorese.xml | ?modules/dPlabo/remote/prescription.xml | modules/dPpatients/tests/Functional/data/patient_sejour.xml
+modules/fhir/classes/Resources/R4/Patient/Profiles/InteropSante/CFHIRResourcePatientFR.php,CFHIRResourcePatientFR,depute,4,modules/fhir/classes/Resources/R4/Bundle/Profiles/ANS/CDL/CFHIRResourceBundleCreationNoteCdL.php | modules/fhir/classes/Resources/R4/DocumentReference/Mapper/ANS/DocumentReferenceCdLDocumentItem.php | modules/fhir/classes/Resources/R4/DocumentReference/Mapper/ANS/DocumentReferenceCdLNote.php | modules/fhir/classes/Resources/R4/RelatedPerson/Profiles/InteropSante/CFHIRResourceRelatedPersonFR.php
+modules/fhir/classes/Resources/R4/Practitioner/Mapper/FrPractitioner.php,FrPractitioner,depute,2,modules/fhir/classes/Resources/R4/Practitioner/Profiles/InteropSante/CFHIRResourcePractitionerFR.php | ?modules/fhir/locales/fr.php
+modules/fhir/classes/Resources/R4/Practitioner/Mapper/Practitioner.php,Practitioner,depute,5,modules/cda/resources/xsl/cda_l10n.xml | ?modules/hl7/resources/extensions/fra/v2_10/compositePIP.xml | ?modules/hl7/resources/extensions/fra/v2_10/compositePLN.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageMFKM02.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageMFNM02.xml
+modules/fhir/classes/Resources/R4/PractitionerRole/Profiles/AnnuaireSante/CFHIRResourcePractitionerRoleOrganizationalRass.php,CFHIRResourcePractitionerRoleOrganizationalRass,depute,1,modules/fhir/classes/Resources/R4/PractitionerRole/Mapper/AnnuaireSante/PractitionerRoleMappingOrganizationalRassExercicePlace.php
+modules/fhir/classes/Resources/R4/PractitionerRole/Profiles/AnnuaireSante/CFHIRResourcePractitionerRoleProfessionalRass.php,CFHIRResourcePractitionerRoleProfessionalRass,depute,2,modules/fhir/classes/Resources/R4/DocumentReference/Mapper/ANS/DocumentReferenceCdLDocumentItem.php | modules/fhir/classes/Resources/R4/DocumentReference/Mapper/ANS/DocumentReferenceCdLNote.php
+modules/fhir/classes/Resources/R4/Schedule/CFHIRResourceSchedule.php,CFHIRResourceSchedule,depute,2,modules/fhir/classes/Event/CFHIREvent.php | modules/fhir/locales/fr.php
+modules/fhir/classes/Resources/R4/Schedule/Mapper/FrSchedule.php,FrSchedule,depute,1,?modules/fhir/locales/fr.php
+modules/fhir/classes/Resources/R4/Schedule/Mapper/Schedule.php,Schedule,depute,5,modules/cda/resources/xsl/cda_l10n.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS23.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS24.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS26.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSQMS25.xml
+modules/fhir/classes/Resources/R4/Schedule/Profiles/InteropSante/CFHIRResourceScheduleFR.php,CFHIRResourceScheduleFR,depute,2,modules/fhir/classes/Resources/R4/Schedule/Mapper/FrSchedule.php | modules/fhir/classes/Resources/R4/Slot/Mapper/FrSlot.php
+modules/fhir/classes/Resources/R4/Slot/CFHIRResourceSlot.php,CFHIRResourceSlot,depute,2,modules/fhir/classes/Resources/R4/Appointment/CFHIRResourceAppointment.php | modules/fhir/locales/fr.php
+modules/fhir/classes/Resources/R4/Slot/Mapper/FrSlot.php,FrSlot,depute,1,?modules/fhir/locales/fr.php
+modules/fhir/classes/Resources/R4/Slot/Mapper/Slot.php,Slot,depute,5,modules/cda/resources/xsl/cda_l10n.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS23.xml | ?modules/hl7/resources/extensions/fra/v2_10/messageSIUS24.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentAPR.xml | ?modules/hl7/resources/extensions/fra/v2_3/messageSIUS23.xml
+modules/fhir/classes/Resources/R4/Slot/Profiles/InteropSante/CFHIRResourceSlotFR.php,CFHIRResourceSlotFR,depute,1,modules/fhir/classes/Resources/R4/Slot/Mapper/FrSlot.php
+modules/fhir/classes/Utilities/BundleBuilder/BuilderBatchTransaction.php,BuilderBatchTransaction,depute,1,modules/fhir/classes/Utilities/BundleBuilder/BundleBuilder.php
+modules/fhir/classes/Utilities/BundleBuilder/BuilderBatchTransactionResponse.php,BuilderBatchTransactionResponse,depute,1,modules/fhir/classes/Utilities/BundleBuilder/BundleBuilder.php
+modules/fhir/classes/Utilities/BundleBuilder/BuilderCollection.php,BuilderCollection,depute,1,modules/fhir/classes/Utilities/BundleBuilder/BundleBuilder.php
+modules/fhir/classes/Utilities/BundleBuilder/BundleBuilder.php,BundleBuilder,depute,2,modules/fhir/classes/Interactions/CFHIRInteractionHistory.php | modules/fhir/classes/Interactions/CFHIRInteractionSearch.php
+modules/fhir/classes/Utilities/CCapabilities.php,CCapabilities,depute,2,modules/fhir/classes/Resources/R4/CapabilityStatement/CFHIRResourceCapabilityStatement.php | ?modules/fhir/locales/fr.php
+modules/fhir/classes/Utilities/CCapabilitiesResource.php,CCapabilitiesResource,depute,5,modules/fhir/ajax_fhir_resources.php | modules/fhir/classes/Resources/CFHIRResource.php | modules/fhir/classes/Resources/R4/AllergyIntolerance/CFHIRResourceAllergyIntolerance.php | modules/fhir/classes/Resources/R4/Appointment/CFHIRResourceAppointment.php | modules/fhir/classes/Resources/R4/Binary/CFHIRResourceBinary.php
+modules/fhir/classes/Utilities/CFHIRTools.php,CFHIRTools,depute,3,modules/fhir/classes/Datatypes/CFHIRDataType.php | modules/fhir/classes/Datatypes/Complex/CFHIRDataTypeComplex.php | modules/fhir/classes/Serializers/CFHIRSerializer.php
+modules/fhir/classes/Utilities/Helper/PatientHelper.php,PatientHelper,depute,1,?modules/fhir/locales/fr.php
+modules/fhir/classes/Utilities/Helper/ResourceHelper.php,ResourceHelper,depute,1,?modules/fhir/locales/fr.php
+modules/fhir/classes/Utilities/Helper/SejourHelper.php,SejourHelper,depute,1,modules/fhir/classes/Resources/R4/DocumentReference/Handle/DocumentReference.php
+modules/fhir/classes/Utilities/SearchParameters/AbstractSearchParameter.php,AbstractSearchParameter,depute,1,modules/fhir/classes/Interactions/CFHIRInteraction.php
+modules/fhir/classes/Utilities/SearchParameters/ISearchParameter.php,ISearchParameter,depute,2,modules/fhir/classes/Utilities/SearchParameters/AbstractSearchParameter.php | modules/fhir/classes/Utilities/SearchParameters/SearchParameter.php
+modules/fhir/classes/Utilities/SearchParameters/SearchParameter.php,SearchParameter,depute,3,modules/fhir/classes/Interactions/CFHIRInteraction.php | modules/fhir/classes/Resources/CFHIRResource.php | modules/fhir/classes/Resources/R4/Patient/CFHIRResourcePatient.php
+modules/fhir/classes/Utilities/SearchParameters/SearchParameterBool.php,SearchParameterBool,depute,1,modules/fhir/classes/Resources/CFHIRResource.php
+modules/fhir/classes/Utilities/SearchParameters/SearchParameterDate.php,SearchParameterDate,depute,2,modules/fhir/ajax_request_fhir.php | modules/fhir/classes/Resources/R4/Patient/CFHIRResourcePatient.php
+modules/fhir/classes/Utilities/SearchParameters/SearchParameterList.php,SearchParameterList,depute,1,modules/fhir/classes/Utilities/CCapabilitiesResource.php
+modules/fhir/classes/Utilities/SearchParameters/SearchParameterNumber.php,SearchParameterNumber,depute,1,modules/fhir/classes/Resources/CFHIRResource.php
+modules/fhir/classes/Utilities/SearchParameters/SearchParameterReference.php,SearchParameterReference,depute,1,modules/fhir/classes/Resources/R4/DocumentReference/CFHIRResourceDocumentReference.php
+modules/fhir/classes/Utilities/SearchParameters/SearchParameterString.php,SearchParameterString,depute,5,modules/fhir/classes/Interactions/CFHIRInteraction.php | modules/fhir/classes/Resources/CFHIRResource.php | modules/fhir/classes/Resources/R4/Patient/CFHIRResourcePatient.php | modules/fhir/classes/Resources/R4/Practitioner/CFHIRResourcePractitioner.php | modules/fhir/classes/Resources/R4/PractitionerRole/CFHIRResourcePractitionerRole.php
+modules/fhir/classes/Utilities/SearchParameters/SearchParameterToken.php,SearchParameterToken,depute,1,modules/fhir/classes/Resources/R4/Patient/CFHIRResourcePatient.php
+modules/fhir/classes/ValueSet/CFHIRIssueSeverity.php,CFHIRIssueSeverity,depute,2,modules/fhir/classes/Exception/CFHIRException.php | modules/fhir/classes/Exception/CFHIRExceptionInvalidValue.php
+modules/fhir/classes/ValueSet/CFHIRIssueType.php,CFHIRIssueType,depute,3,modules/fhir/classes/Exception/CFHIRException.php | modules/fhir/classes/Exception/CFHIRExceptionInvalidValue.php | modules/fhir/classes/Exception/CFHIRExceptionNotFound.php
+modules/fhir/templates/Tests/inc_headers_crud_operations.tpl,inc_headers_crud_operations,depute,1,modules/fhir/templates/inc_vw_crud_operations.tpl
+modules/fhir/templates/Tests/inc_show_resources_capabilities.tpl,inc_show_resources_capabilities,depute,1,modules/fhir/templates/inc_vw_crud_operations.tpl
+modules/fhir/templates/Tests/inc_std_crud_operations.tpl,inc_std_crud_operations,depute,1,modules/fhir/templates/inc_vw_crud_operations.tpl
+modules/fhir/templates/inc_choice_object_delegated.tpl,inc_choice_object_delegated,depute,1,modules/fhir/templates/inc_message_supported_section_header.tpl
+modules/fhir/templates/inc_list_fhir_message_supported.tpl,inc_list_fhir_message_supported,depute,1,modules/fhir/classes/Controllers/Legacy/CLegacyFHIRController.php
+modules/fhir/templates/inc_message_supported_section_header.tpl,inc_message_supported_section_header,depute,1,modules/eai/templates/inc_messages_supported.tpl
+modules/hl7/classes/Events/PRPA/CHL7v3EventPRPAIN201306UV02.php,CHL7v3EventPRPAIN201306UV02,depute,3,modules/hl7/classes/Events/CPRPA.php | modules/hl7/locales/fr.php | modules/hl7/locales/it.php
+modules/hl7/classes/Segments/CHL7v2SegmentNTE.php,CHL7v2SegmentNTE,depute,1,modules/hl7/classes/Events/SWF/CHL7v2EventSIU.php
+modules/ihe/classes/CIHEFHIR.php,CIHEFHIR,depute,4,modules/fhir/classes/CExchangeFHIR.php | modules/ihe/classes/CMHD.php | modules/ihe/classes/CPDQm.php | modules/ihe/classes/CPIXm.php
+modules/import/templates/inc_list_users.tpl,inc_list_users,depute,2,modules/admin/ajax_search_users.php | modules/import/classes/Controllers/Legacy/CImportFwLegacyController.php
+modules/import/templates/vw_users.tpl,vw_users,depute,2,modules/import/classes/Controllers/Legacy/CImportFwLegacyController.php | modules/importTools/factory/vw_users.php
+modules/importTools/templates/vw_import_cron_logs.tpl,vw_import_cron_logs,depute,3,modules/importTools/classes/CTabsImportTools.php | ?modules/importTools/locales/fr.php | ?modules/importTools/locales/it.php
+modules/importTools/templates/vw_regression_test.tpl,vw_regression_test,depute,3,modules/importTools/classes/CTabsImportTools.php | ?modules/importTools/locales/fr.php | ?modules/importTools/locales/it.php
+modules/lpp/classes/Controllers/Legacy/LppLegacyController.php,LppLegacyController,depute,1,includes/legacy_actions.php
+modules/lpp/classes/Exceptions/LppDatabaseException.php,LppDatabaseException,depute,2,modules/lpp/tests/Unit/LppCodeRepositoryTest.php | modules/lpp/tests/Unit/LppPricingRepositoryTest.php
+modules/lpp/classes/Repository/LppChapterRepository.php,LppChapterRepository,depute,2,modules/lpp/classes/CLPPChapter.php | modules/lpp/classes/CLPPCode.php
+modules/lpp/classes/Repository/LppCodeRepository.php,LppCodeRepository,depute,4,modules/lpp/classes/CActeLPP.php | modules/lpp/classes/CLPPChapter.php | modules/lpp/classes/CLPPCode.php | modules/lpp/tests/Unit/LppCodeRepositoryTest.php
+modules/lpp/classes/Repository/LppPricingRepository.php,LppPricingRepository,depute,2,modules/lpp/classes/CLPPCode.php | modules/lpp/tests/Unit/LppPricingRepositoryTest.php
+modules/lpp/classes/Repository/LppRepository.php,LppRepository,depute,3,modules/lpp/classes/Repository/LppChapterRepository.php | modules/lpp/classes/Repository/LppCodeRepository.php | modules/lpp/classes/Repository/LppPricingRepository.php
+modules/lpp/javascript/LPP.js,LPP,depute,5,?modules/dPstock/templates/inc_order_items_list.tpl | modules/lpp/templates/inc_acte.tpl | modules/dPcabinet/classes/CConsultation.php | ?modules/dPcabinet/locales/de.php | ?modules/dPcabinet/locales/fr.php
+modules/lpp/templates/database_config.tpl,database_config,depute,1,modules/lpp/templates/configure.tpl
+modules/maternite/classes/Controllers/Legacy/CGrossesseController.php,CGrossesseController,depute,1,includes/legacy_actions.php
+modules/maternite/classes/Controllers/Legacy/CHospitalizeController.php,CHospitalizeController,depute,1,includes/legacy_actions.php
+modules/maternite/classes/Controllers/Legacy/CPerinatalFolderController.php,CPerinatalFolderController,depute,1,includes/legacy_actions.php
+modules/maternite/javascript/timeline_implement.js,timeline_implement,depute,3,?modules/dPcabinet/templates/appointment_timeline.tpl | ?modules/dPpatients/templates/CEvenementPatient_view.tpl | ?modules/maternite/templates/pregnancy_timeline.tpl
+modules/maternite/templates/inc_dossier_mater_infos_admission.tpl,inc_dossier_mater_infos_admission,depute,1,modules/maternite/templates/inc_dossier_mater_admission.tpl
+modules/maternite/templates/inc_dossier_mater_infos_sortie.tpl,inc_dossier_mater_infos_sortie,depute,2,modules/maternite/templates/edit_nouveau_ne_resume_sejour.tpl | modules/maternite/templates/inc_dossier_mater_resume_sejour_mere.tpl
+modules/maternite/templates/inc_oea.tpl,inc_oea,depute,3,modules/maternite/templates/vw_list_naissances.tpl | modules/maternite/templates/vw_print_naissances.tpl | modules/maternite/templates/vw_print_pediatric_consult.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_analyse_urine.tpl,inc_analyse_urine,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_bilan_premier_trimestre.tpl,inc_bilan_premier_trimestre,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_bilan_second_trimestre.tpl,inc_bilan_second_trimestre,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_bilan_vasculo_renal.tpl,inc_bilan_vasculo_renal,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_biochimie_hemostase.tpl,inc_biochimie_hemostase,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_depistage_general.tpl,inc_depistage_general,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_depistages_personalises.tpl,inc_depistages_personalises,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_immuno_hematologie.tpl,inc_immuno_hematologie,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_prelevement_vaginal.tpl,inc_prelevement_vaginal,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/depistages/inc_serologie.tpl,inc_serologie,depute,1,modules/maternite/templates/synthese_grossesse/inc_depistages.tpl
+modules/maternite/templates/synthese_grossesse/inc_allergies_mere.tpl,inc_allergies_mere,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_atcds_parents.tpl,inc_atcds_parents,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_current_pregnancy.tpl,inc_current_pregnancy,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_depistages.tpl,inc_depistages,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_infos_parturiente.tpl,inc_infos_parturiente,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_infos_pere.tpl,inc_infos_pere,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_infos_praticien.tpl,inc_infos_praticien,depute,3,modules/maternite/templates/print_fiche_synthese.tpl | modules/mediusers/templates/inc_edit_mediuser.tpl | modules/mediusers/templates/inc_info_mediuser.tpl
+modules/maternite/templates/synthese_grossesse/inc_produits_toxiques.tpl,inc_produits_toxiques,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_resume_accouchement.tpl,inc_resume_accouchement,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_sejours_grossesse.tpl,inc_sejours_grossesse,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_surveillance_echographique.tpl,inc_surveillance_echographique,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/maternite/templates/synthese_grossesse/inc_synthese_enfant.tpl,inc_synthese_enfant,depute,1,modules/maternite/templates/synthese_grossesse/inc_surveillance_echographique.tpl
+modules/maternite/templates/synthese_grossesse/inc_traitements_sejours_mere.tpl,inc_traitements_sejours_mere,depute,1,modules/maternite/templates/print_fiche_synthese.tpl
+modules/mediusers/classes/CMediusersExportXml.php,CMediusersExportXml,depute,2,modules/mediusers/classes/Controllers/Legacy/CMediusersExportLegacyController.php | modules/mediusers/tests/Unit/CMediusersExportXmlTest.php
+modules/monitoringPatient/ajax_edit_config_param_surveillance.php,ajax_edit_config_param_surveillance,depute,3,modules/monitoringPatient/javascript/param_surveillance.js | ?modules/dPpatients/locales/it.php | ?modules/monitoringPatient/locales/fr.php
+modules/monitoringPatient/ajax_edit_observation_value_to_constant.php,ajax_edit_observation_value_to_constant,depute,3,modules/monitoringPatient/javascript/param_surveillance.js | ?modules/dPpatients/locales/it.php | ?modules/monitoringPatient/locales/fr.php
+modules/monitoringPatient/ajax_list_config_param_surveillance.php,ajax_list_config_param_surveillance,depute,3,modules/monitoringPatient/javascript/param_surveillance.js | ?modules/dPpatients/locales/it.php | ?modules/monitoringPatient/locales/fr.php
+modules/monitoringPatient/classes/SupervisionGraph.php,SupervisionGraph,depute,5,?modules/dPsalleOp/templates/inc_vw_surveillance_perop.tpl | ?modules/dPsalleOp/templates/vw_print_supervision.tpl | ?modules/dPsalleOp/templates/vw_print_supervision_tabs.tpl | ?modules/monitoringPatient/templates/inc_edit_supervision_timed_data.tpl | ?modules/monitoringPatient/templates/inc_edit_supervision_timed_picture.tpl
+modules/monitoringPatient/templates/configure.tpl,configure,depute,5,?modules/admin/templates/configure.tpl | ?modules/admin/templates/inc_config_ldap.tpl | ?modules/admin/templates/rgpd_configure.tpl | ?modules/astreintes/templates/configure.tpl | ?modules/dPadmissions/templates/configure.tpl
+modules/monitoringPatient/templates/inc_edit_config_param_surveillance.tpl,inc_edit_config_param_surveillance,depute,1,modules/monitoringPatient/ajax_edit_config_param_surveillance.php
+modules/monitoringPatient/templates/inc_edit_supervision_graph.tpl,inc_edit_supervision_graph,depute,1,modules/monitoringPatient/ajax_edit_supervision_graph.php
+modules/monitoringPatient/templates/inc_edit_supervision_graph_axis.tpl,inc_edit_supervision_graph_axis,depute,1,modules/monitoringPatient/ajax_edit_supervision_graph_axis.php
+modules/monitoringPatient/templates/inc_edit_supervision_graph_axis_label.tpl,inc_edit_supervision_graph_axis_label,depute,1,modules/monitoringPatient/ajax_edit_supervision_graph_axis_label.php
+modules/monitoringPatient/templates/inc_edit_supervision_graph_pack.tpl,inc_edit_supervision_graph_pack,depute,1,modules/monitoringPatient/ajax_edit_supervision_graph_pack.php
+modules/monitoringPatient/templates/inc_edit_supervision_graph_series.tpl,inc_edit_supervision_graph_series,depute,1,modules/monitoringPatient/ajax_edit_supervision_graph_series.php
+modules/monitoringPatient/templates/inc_edit_supervision_graph_to_pack.tpl,inc_edit_supervision_graph_to_pack,depute,1,modules/monitoringPatient/ajax_edit_supervision_graph_to_pack.php
+modules/monitoringPatient/templates/inc_edit_supervision_instant_data.tpl,inc_edit_supervision_instant_data,depute,1,modules/monitoringPatient/ajax_edit_supervision_instant_data.php
+modules/monitoringPatient/templates/inc_edit_supervision_table.tpl,inc_edit_supervision_table,depute,1,modules/monitoringPatient/ajax_edit_supervision_table.php
+modules/monitoringPatient/templates/inc_edit_supervision_table_row.tpl,inc_edit_supervision_table_row,depute,1,modules/monitoringPatient/ajax_edit_supervision_table_row.php
+modules/openData/templates/inc_field_commune_autocomplete.tpl,inc_field_commune_autocomplete,depute,1,modules/openData/ajax_seek_commune_autocomplete.php
+modules/provenance/javascript/provenance.js,provenance,depute,5,?modules/hl7/resources/extensions/fra/v2_10/segmentZFM.xml | ?modules/hl7/resources/extensions/fra/v2_10/segmentZFV.xml | ?modules/hl7/resources/extensions/fra/v2_3/segmentZFM.xml | ?modules/hl7/resources/extensions/fra/v2_3/segmentZFV.xml | ?modules/hl7/resources/extensions/fra/v2_4/segmentZFM.xml
+modules/rpps/javascript/fictifDoctor.js,fictifDoctor,depute,1,?modules/rpps/templates/vw_fictif_doctor.tpl
+modules/soins/classes/CObservationEmailHandler.php,CObservationEmailHandler,depute,5,?modules/soins/templates/inc_configure_soins.tpl | modules/soins/classes/CConfigurationSoins.php | modules/soins/locales/fr.php | modules/soins/locales/it.php | ?modules/system/locales/fr.php
+modules/soins/classes/Controllers/Legacy/DossierSoinsController.php,DossierSoinsController,depute,2,modules/soins/vw_dossier_sejour.php | includes/legacy_actions.php
+modules/soins/classes/Controllers/Legacy/SejourController.php,SejourController,depute,1,includes/legacy_actions.php
+modules/soins/classes/Controllers/Legacy/SejourFormController.php,SejourFormController,depute,1,includes/legacy_actions.php
+modules/soins/classes/Controllers/Legacy/SuiviSoinsController.php,SuiviSoinsController,depute,1,includes/legacy_actions.php
+modules/soins/classes/DossierSoinsService.php,DossierSoinsService,depute,1,modules/soins/classes/Controllers/Legacy/DossierSoinsController.php
+modules/soins/javascript/sejour_timeline.js,sejour_timeline,depute,5,?modules/soins/templates/inc_sejour_timeline.tpl | modules/soins/templates/inc_vw_suivi_clinique.tpl | modules/soins/templates/sejour_timeline.tpl | modules/soins/javascript/timeline_implement.js | ?modules/soins/locales/fr.php
+modules/soins/templates/inc_vw_traitements.tpl,inc_vw_traitements,depute,1,modules/dPpatients/templates/inc_antecedents_allergies.tpl
+modules/system/classes/CUserLogHandler.php,CUserLogHandler,depute,3,modules/system/classes/CConfigurationSystem.php | modules/system/locales/fr.php | modules/system/locales/it.php
+modules/system/classes/Timeline/ITimelineCategory.php,ITimelineCategory,depute,5,modules/dPcabinet/classes/Timeline/Category/AllergyCategoryConsultation.php | modules/dPcabinet/classes/Timeline/Category/AnesthAppointmentCategoryConsultation.php | modules/dPcabinet/classes/Timeline/Category/AntecedentCategoryConsultation.php | modules/dPcabinet/classes/Timeline/Category/AppointmentCategoryConsultation.php | modules/dPcabinet/classes/Timeline/Category/BirthCategoryConsultation.php
+modules/system/classes/Timeline/ITimelineMenuItem.php,ITimelineMenuItem,depute,2,modules/system/classes/Timeline/ITimelineAttachableMenuItem.php | modules/system/classes/Timeline/TimelineAttachedMenuItem.php
+modules/system/classes/Timeline/Timeline.php,Timeline,depute,5,?modules/dPbloc/templates/vw_timeline_salles.tpl | ?modules/dPsalleOp/templates/inc_operation.tpl | ?modules/maternite/templates/inc_vw_tdb_grossesse.tpl | ?libpkg/patches/visjs/vis.js | ?modules/dPdeveloppement/javascript/PerformanceTimingAnalyzer.js
+modules/system/classes/Timeline/TimelineCategory.php,TimelineCategory,depute,5,modules/dPcabinet/classes/Timeline/Category/AllergyCategoryConsultation.php | modules/dPcabinet/classes/Timeline/Category/AnesthAppointmentCategoryConsultation.php | modules/dPcabinet/classes/Timeline/Category/AntecedentCategoryConsultation.php | modules/dPcabinet/classes/Timeline/Category/AppointmentCategoryConsultation.php | modules/dPcabinet/classes/Timeline/Category/BirthCategoryConsultation.php
+modules/system/classes/Timeline/TimelineFactory.php,TimelineFactory,depute,2,modules/dPcabinet/ajax_timeline_appointment.php | modules/soins/sejour_timeline.php
+modules/system/classes/Timeline/TimelineMenu.php,TimelineMenu,depute,3,modules/dPcabinet/ajax_timeline_appointment.php | modules/soins/sejour_timeline.php | modules/system/tests/Unit/Timeline/TimelineMenuTest.php
+modules/system/classes/Timeline/TimelineMenuItem.php,TimelineMenuItem,depute,3,modules/system/classes/Timeline/TimelineAttachedMenuItem.php | modules/system/tests/Unit/Timeline/CTimelineCabinetTest.php | modules/system/tests/Unit/Timeline/TimelineMenuTest.php
+modules/system/templates/cgu.tpl,cgu,depute,4,modules/admin/templates/inc_psc_cgu.tpl | ?modules/admin/templates/inc_psc_login.tpl | ?modules/admin/locales/fr.php | modules/system/classes/Controllers/Legacy/SystemLegacyController.php
+modules/system/templates/config/custom/inc_config_category_summary.tpl,inc_config_category_summary,depute,2,?modules/dPcabinet/classes/CConfigurationCabinet.php | ?modules/dPsalleOp/classes/CConfigurationSalleOp.php
+modules/system/templates/config/custom/inc_config_fhir_list_object_delegated.tpl,inc_config_fhir_list_object_delegated,depute,1,?modules/fhir/classes/CConfigurationFHIR.php
+modules/system/templates/inc_progress_bar.tpl,inc_progress_bar,depute,1,modules/system/templates/calendars/vw_week.tpl
+modules/xds/ajax_search_documents.php,ajax_search_documents,depute,1,modules/xds/javascript/xds_document.js
+modules/xds/classes/CXDSRepository.php,CXDSRepository,depute,1,modules/xds/classes/XDM/CXDMRepository.php
+modules/xds/classes/Exception/CXDSException.php,CXDSException,depute,5,modules/hl7/classes/Events/XDSb/CHL7v3EventXDSbUpdateDocumentSet.php | modules/xds/classes/Analyzer/SignatureMetadataAnalyzer.php | modules/xds/classes/Factory/CXDSFactory.php | modules/xds/classes/Structure/DocumentEntry/CXDSDocumentEntry.php | modules/xds/classes/Structure/SubmissionSet/CXDSSubmissionSet.php
+modules/xds/classes/Factory/CXDSANS.php,CXDSANS,depute,1,?modules/xds/classes/Factory/CXDSFactory.php
+modules/xds/classes/Factory/IXDSContext.php,IXDSContext,depute,2,modules/cda/classes/CCDAFactory.php | ?modules/xds/classes/Factory/CXDSFactory.php
+modules/xds/classes/XDM/CXDMRepository.php,CXDMRepository,depute,1,modules/hl7/classes/Events/XDM/CHL7v3EventXDMDistributeDocumentSetOnMedia.php
+tools/audit_gate.py,audit_gate,depute,1,?tools/smoke.sh
+tools/smoke.sh,smoke,depute,3,?tools/phpunit_gate.php | ?.github/workflows/ci.yml | ?dev/Docker/docker-compose.yml

@@ -1,0 +1,54 @@
+# Hospilibre — cours MIAGE : UN hôpital simulé autonome (aucun fichier de l'hôte n'est monté).
+#
+#   docker pull eriamschaffter/hospilibre-sim:<hopital>
+#   HOSPITAL=chu CRISIS=epidemie docker compose -f docker-compose.cours.yml up -d
+#
+# Hors ligne : docker load -i hospilibre-sim-<hopital>.tar.gz, puis IMAGE=hospilibre-sim devant
+# la commande (l'archive charge l'image sous ce nom local).
+#
+# HOSPITAL : chu | clinique | ssr        CRISIS (optionnel) : epidemie | plan_blanc | crise_interne
+# PORT     : port local (défaut 8080)    Plusieurs hôpitaux en parallèle : un PORT différent chacun.
+name: hospilibre-${HOSPITAL:-chu}
+
+services:
+  app:
+    image: ${IMAGE:-eriamschaffter/hospilibre-sim}:${HOSPITAL:-chu}
+    ports:
+      - "${PORT:-8080}:80"
+    environment:
+      DB_HOST: db
+      DB_NAME: hospilibre
+      # root : MariaDB locale propre à ce conteneur, et l'installation neuve doit créer des bases
+      # (application + référentiels ccamv2, cim10). Ne jamais exposer le port 3306 tel quel.
+      DB_USER: root
+      DB_PASS: hospilibre-root
+      HOSPILIBRE_FRESH_INSTALL: "on"
+      HOSPILIBRE_SIMULATION: ${HOSPITAL:-chu}
+      HOSPILIBRE_CRISIS: ${CRISIS:-}
+      HOSPILIBRE_SIM_HISTORY_DAYS: ${HISTORY_DAYS:-90}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - app_files:/var/www/html/files
+    mem_limit: ${APP_MEM:-3g}
+    restart: unless-stopped
+
+  db:
+    image: mariadb:10.11
+    environment:
+      MYSQL_ROOT_PASSWORD: hospilibre-root
+      MYSQL_DATABASE: hospilibre
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    mem_limit: ${DB_MEM:-1500m}
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  app_files:

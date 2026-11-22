@@ -1,0 +1,5 @@
+node_modules/
+.auth/
+.results/
+report/
+test-results/

@@ -1,0 +1,10 @@
+cabinet_update_consultation:
+  path: api/cabinet/consultations/{consultation_id}
+  controller: Hospilibre\Cabinet\Controllers\CConsultationController::updateConsultation
+  methods: PUT
+  defaults:
+    permission: edit
+  requirements:
+    evenement_id: '\d+'
+  options:
+    description: Update CConsultation

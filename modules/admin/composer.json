@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Hospilibre\\Admin\\": "classes",
+      "Hospilibre\\Admin\\Tests\\": "tests"
+    }
+  }
+}

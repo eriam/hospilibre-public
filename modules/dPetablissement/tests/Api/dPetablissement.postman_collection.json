@@ -1,0 +1,795 @@
+{
+	"info": {
+		"_postman_id": "98d8f17e-c0dc-4c84-ac09-40cae64a22da",
+		"name": "dPetablissement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18601035"
+	},
+	"item": [
+		{
+			"name": "groups",
+			"item": [
+				{
+					"name": "show_group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Object is type group and id is OK\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.type).to.eql('group');\r",
+									"    pm.expect(jsonData.data.id).to.contain(pm.collectionVariables.get(\"group_id_1\"));\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/groups/{{group_id_1}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"{{group_id_1}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\r",
+									"    `Response Resource type should be 'group'`,\r",
+									"    () => {\r",
+									"        const body = pm.response.json();\r",
+									"\r",
+									"        pm.expect(body.data.type, `Response resource type is not 'group'`).to.equal('group');\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"group\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"adresse\": \"adresse de test\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/groups/{{group_id_1}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"{{group_id_1}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_group does not exist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is return\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.message).to.contains('Objet non trouvé');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/groups/999999999999",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"999999999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list_groups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"More than one object is returned\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.meta.count).to.be.greaterThan(0);\r",
+									"    jsonData.data.each(function (elem){\r",
+									"        pm.expect(elem.type).to.be.eq('group');\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/groups",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/groups/{{group_id_1}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"{{group_id_1}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_groups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"More than one object is returned\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.meta.count).to.be.greaterThan(0);\r",
+									"    jsonData.data.each(function (elem){\r",
+									"        pm.expect(elem.type).to.be.eq('group');\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"group\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"_name\": \"Deuxieme etablissement de test\",\r\n                \"code\": \"test_code2\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/groups",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "functions",
+			"item": [
+				{
+					"name": "update_function",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\r",
+									"    `Response Resource type should be 'function'`,\r",
+									"    () => {\r",
+									"        const body = pm.response.json();\r",
+									"\r",
+									"        pm.expect(body.data.type, `Response resource type is not 'function'`).to.equal('function');\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"function\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"color\": \"8e6887\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/groups/functions/{{function_id_1}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"functions",
+								"{{function_id_1}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_function",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"More than one object is returned\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.meta.count).to.be.greaterThan(0);\r",
+									"    jsonData.data.each(function (elem){\r",
+									"        pm.expect(elem.type).to.be.eq('function');\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"function\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"text\": \"Deuxieme fonction de test\",\r\n                \"type\": \"administratif\",\r\n                \"color\": \"FFFFFF\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/groups/{{group_id_2}}/functions",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"{{group_id_2}}",
+								"functions"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_function",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Object is type function is OK\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.type).to.eql('function');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/groups/functions/{{function_id_1}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"functions",
+								"{{function_id_1}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_function does not exist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is return\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.message).to.contains('Objet non trouvé');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/groups/functions/999999999999",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"functions",
+								"999999999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list_functions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"More than one object is returned\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.meta.count).to.be.greaterThan(0);\r",
+									"    jsonData.data.each(function (elem){\r",
+									"        pm.expect(elem.type).to.be.eq('function');\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/groups/{{group_id_2}}/functions",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"{{group_id_2}}",
+								"functions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_function",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/groups/functions/{{function_id_1}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"functions",
+								"{{function_id_1}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{Auth_Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Auth_Username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.variables.set(\"auth\", \"Basic \" + btoa(pm.environment.get('Auth_Username') + ':' + pm.environment.get('Auth_Password')));",
+					"",
+					"if (!pm.collectionVariables.get('group_id_1')) {",
+					"    pm.sendRequest(",
+					"        {",
+					"            \"url\": pm.environment.get('Host') + \"/api/fixtures/GROUP_FIXTURES_G1?limit=1\",",
+					"            \"header\": {\"Authorization\": pm.variables.get(\"auth\")}",
+					"        },",
+					"        function (err, response) {",
+					"            pm.collectionVariables.set(\"group_id_1\", response.json().data[0].attributes.object_id);",
+					"        }",
+					"    );",
+					"}",
+					"",
+					"if (!pm.collectionVariables.get('function_id_1')) {",
+					"    pm.sendRequest(",
+					"        {",
+					"            \"url\": pm.environment.get('Host') + \"/api/fixtures/FUNCTION_FIXTURES_F1?limit=1\",",
+					"            \"header\": {\"Authorization\": pm.variables.get(\"auth\")}",
+					"        },",
+					"        function (err, response) {",
+					"            pm.collectionVariables.set(\"function_id_1\", response.json().data[0].attributes.object_id);",
+					"        }",
+					"    );",
+					"}",
+					"",
+					"if (!pm.collectionVariables.get('group_id_2')) {",
+					"    pm.sendRequest(",
+					"        {",
+					"            \"url\": pm.environment.get('Host') + \"/api/fixtures/GROUP_FIXTURES_G2?limit=1\",",
+					"            \"header\": {\"Authorization\": pm.variables.get(\"auth\")}",
+					"        },",
+					"        function (err, response) {",
+					"            pm.collectionVariables.set(\"group_id_2\", response.json().data[0].attributes.object_id);",
+					"        }",
+					"    );",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "group_id_1",
+			"value": ""
+		},
+		{
+			"key": "group_id_2",
+			"value": ""
+		},
+		{
+			"key": "function_id_1",
+			"value": ""
+		}
+	]
+}

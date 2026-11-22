@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Hospilibre\\OpenData\\": "classes",
+      "Hospilibre\\OpenData\\Tests\\": "tests"
+    }
+  }
+}

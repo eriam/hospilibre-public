@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Hospilibre\\Ccam\\": "classes",
+      "Hospilibre\\Ccam\\Tests\\": "tests"
+    }
+  }
+}

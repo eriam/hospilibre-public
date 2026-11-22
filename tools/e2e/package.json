@@ -1,0 +1,13 @@
+{
+  "name": "hospilibre-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Suite E2E Playwright — vérif UI du balayage OXOL",
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1"
+  }
+}

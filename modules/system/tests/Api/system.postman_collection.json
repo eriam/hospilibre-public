@@ -1,0 +1,1677 @@
+{
+	"info": {
+		"_postman_id": "5c1d351d-9a96-486d-8a1d-b759366f3c40",
+		"name": "system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18601035"
+	},
+	"item": [
+		{
+			"name": "configurations",
+			"item": [
+				{
+					"name": "configurations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('type', 'configurations');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains attributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('attributes');\r",
+									"\r",
+									"    var attributes = jsonData.data.attributes;\r",
+									"\r",
+									"    pm.expect(attributes).to.have.property('instance');\r",
+									"    pm.expect(attributes).to.have.property('context');\r",
+									"    pm.expect(attributes).to.have.property('static');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/configurations/{{Sample_Locales_Module}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"{{Sample_Locales_Module}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "configurations (failure)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"pm.test(\"Response contains error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.be.have.property(\"errors\");\r",
+									"});\r",
+									"pm.test(\"Error says not found\", function () {\r",
+									"    var jsonData  = pm.response.json();\r",
+									"    var jsonError = jsonData.errors;\r",
+									"    pm.expect(jsonError).to.have.property('code', 0);\r",
+									"    pm.expect(jsonError).to.have.property('message');\r",
+									"    pm.expect(jsonError.message).to.contain('does not exist');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/configurations/{{$randomFirstName}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"{{$randomFirstName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get configurations module",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('type', 'configurations');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains attributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('attributes');\r",
+									"\r",
+									"    var attributes = jsonData.data.attributes;\r",
+									"\r",
+									"    pm.expect(attributes).to.have.property('instance');\r",
+									"    pm.expect(attributes).to.have.property('context');\r",
+									"    pm.expect(attributes).to.have.property('static');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/configurations/{{Sample_Locales_Module}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"{{Sample_Locales_Module}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get configurations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"More than one object is returned\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.meta.count).to.be.greaterThan(0);\r",
+									"    jsonData.data.each(function (elem){\r",
+									"        pm.expect(elem.type).to.be.eq('configuration');\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"        pm.collectionVariables.set(\"upload_max_filesize\", elem.attributes['dPfiles General upload_max_filesize']);\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"configuration\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"feature\": \"dPfiles General upload_max_filesize\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/configurations?context=CGroups-1",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "CGroups-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set configurations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"More than one object is returned\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.meta.count).to.be.greaterThan(0);\r",
+									"    jsonData.data.each(function (elem){\r",
+									"        pm.expect(elem.type).to.be.eq('configuration');\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"configuration\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"feature\": \"dPfiles General upload_max_filesize\",\r\n                \"value\": \"{{upload_max_filesize}}\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/configurations?context=CGroups-1",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "CGroups-1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "locales",
+			"item": [
+				{
+					"name": "locales",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('type', 'locales');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains attributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('attributes');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/locales/{{Sample_Locales_Lang}}/{{Sample_Locales_Module}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"locales",
+								"{{Sample_Locales_Lang}}",
+								"{{Sample_Locales_Module}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "preferences",
+			"item": [
+				{
+					"name": "preferences",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('type', 'preferences');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains attributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('attributes');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/preferences/{{Sample_Locales_Module}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"preferences",
+								"{{Sample_Locales_Module}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "preferences/{$id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('type', 'preferences');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains attributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('attributes');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/preferences/{{Sample_Locales_Module}}/{{Sample_Mediuser}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"preferences",
+								"{{Sample_Locales_Module}}",
+								"{{Sample_Mediuser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set preferences",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(`Response Resource type should be 'preference' and ID is not null`, function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.data.each(function (elem){\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"        pm.expect(elem.type, `Response resource type is not 'preference'`).to.equal('preference');\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Need to create default preference before create one for a user\r",
+									"pm.sendRequest(pm.environment.get(\"R1\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"preference\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"key\": \"TESTPREFDEFAULT\",\r\n                \"value\": \"0\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/preferences/{{Sample_Mediuser}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"preferences",
+								"{{Sample_Mediuser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set preferences default",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"R1\", pm.request);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(`Response Resource type should be 'preference' and ID is not null`, function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.data.each(function (elem){\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"        pm.expect(elem.type, `Response resource type is not 'preference'`).to.equal('preference');\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"preference\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"key\": \"TESTPREFDEFAULT\",\r\n                \"value\": \"1\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/preferences/",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"preferences",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete preference",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"preference\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"key\": \"TESTPREFDEFAULT\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/preferences/{{Sample_Mediuser}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"preferences",
+								"{{Sample_Mediuser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete preference failed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error says not found\", function () {\r",
+									"    var jsonData  = pm.response.json();\r",
+									"    var jsonError = jsonData.errors;\r",
+									"    pm.expect(jsonError).to.have.property('message');\r",
+									"    pm.expect(jsonError.message).to.contain('does not exist');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"preference\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"key\": \"TESTPREFRESTRICTEDFAILED1\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/preferences/{{Sample_Mediuser}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"preferences",
+								"{{Sample_Mediuser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete preference default",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error says cannot delete default preferences\", function () {\r",
+									"    let error = pm.response.json().errors;\r",
+									"    pm.expect(error.message).contain('cannot delete default preferences');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"type\": \"preference\",\r\n            \"id\": null,\r\n            \"attributes\": {\r\n                \"key\": \"TESTPREFDEFAULT\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/preferences/",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"preferences",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "preferences (not found)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Response contains error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.be.have.property(\"errors\");\r",
+									"});\r",
+									"pm.test(\"Error says not installed\", function () {\r",
+									"    var jsonData  = pm.response.json();\r",
+									"    var jsonError = jsonData.errors;\r",
+									"    pm.expect(jsonError).to.have.property('code', 0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/preferences/{{$randomWord}}/{{$timestamp}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"preferences",
+								"{{$randomWord}}",
+								"{{$timestamp}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "schema",
+			"item": [
+				{
+					"name": "schema",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.data).to.have.length.gt(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var moduleData = jsonData.data[0];\r",
+									"    pm.expect(moduleData).to.have.property('type', 'schema');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains attributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var moduleData = jsonData.data[0];\r",
+									"    pm.expect(moduleData).to.have.property('attributes');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/schemas/{{Sample_Resource_Type}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"schemas",
+								"{{Sample_Resource_Type}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "history",
+			"item": [
+				{
+					"name": "history",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"array\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/history/{{Sample_Resource_Type}}/{{Sample_Resource_Identifier}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"history",
+								"{{Sample_Resource_Type}}",
+								"{{Sample_Resource_Identifier}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "history (error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Response contains error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.be.have.property(\"errors\");\r",
+									"});\r",
+									"pm.test(\"Error says not found\", function () {\r",
+									"    var jsonData  = pm.response.json();\r",
+									"    var jsonError = jsonData.errors;\r",
+									"    pm.expect(jsonError).to.have.property('code', 0);\r",
+									"    pm.expect(jsonError).to.have.property('message');\r",
+									"    pm.expect(jsonError.message).to.contain(\"not found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/history/{{$randomWeekday}}/{{Sample_Resource_Identifier}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"history",
+								"{{$randomWeekday}}",
+								"{{Sample_Resource_Identifier}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "modules",
+			"item": [
+				{
+					"name": "modules",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.data).to.have.length.gt(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var moduleData = jsonData.data[0];\r",
+									"    pm.expect(moduleData).to.have.property('type', 'module');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains attributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var moduleData = jsonData.data[0];\r",
+									"    pm.expect(moduleData).to.have.property('attributes');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/modules",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modules with pagination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('Returned count is 4', function (){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.meta.count).to.be.eq(4);\r",
+									"});\r",
+									"\r",
+									"pm.test('Pagination links are present', function (){\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.links).to.have.property('self');\r",
+									"    pm.expect(jsonData.links).to.have.property('next');\r",
+									"    pm.expect(jsonData.links).to.have.property('last');\r",
+									"    pm.expect(jsonData.links).to.have.property('first');\r",
+									"    pm.expect(jsonData.links).to.have.property('modules');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/modules?offset=5&limit=4",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "5"
+								},
+								{
+									"key": "limit",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "legacy/modules/{$id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('type', 'module');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains attributes\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('attributes');\r",
+									"\r",
+									"    var moduleName = pm.environment.get('Sample_Locales_Module');\r",
+									"    var attributes = jsonData.data.attributes;\r",
+									"\r",
+									"    pm.expect(attributes).to.have.property('mod_version');\r",
+									"    pm.expect(attributes).to.have.property('mod_type', 'core');\r",
+									"    pm.expect(attributes).to.have.property('mod_name', moduleName);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/legacy/modules/{{Sample_Locales_Module}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"legacy",
+								"modules",
+								"{{Sample_Locales_Module}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "legacy/module (not installed)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Response contains error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.be.have.property(\"errors\");\r",
+									"});\r",
+									"pm.test(\"Error says not installed\", function () {\r",
+									"    var jsonData  = pm.response.json();\r",
+									"    var jsonError = jsonData.errors;\r",
+									"    pm.expect(jsonError).to.have.property('code', 0);\r",
+									"    pm.expect(jsonError).to.have.property('message');\r",
+									"    pm.expect(jsonError.message).to.contain(\"not installed\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/legacy/modules/{{$randomBankAccountBic}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"legacy",
+								"modules",
+								"{{$randomBankAccountBic}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list module tabs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Return body contain tabs with url\", function () {\r",
+									"    const data = pm.response.json();\r",
+									"\r",
+									"    data.data.each(function (elem) {\r",
+									"        pm.expect(elem.type).to.be.eq('tab');\r",
+									"        pm.expect(elem.links).to.have.property('tab_url');\r",
+									"        pm.expect(elem.links.tab_url).to.not.be.null;\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/modules/{{Sample_Locales_Module}}/tabs",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules",
+								"{{Sample_Locales_Module}}",
+								"tabs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list module tabs does not exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is module does not exists\", function () {\r",
+									"    const data = pm.response.json();\r",
+                                    "    pm.expect(data.errors.message).to.contain('is not installed.');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/modules/{{$randomBankAccountBic}}/tabs",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules",
+								"{{$randomBankAccountBic}}",
+								"tabs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modules/{$id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains valid data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data type is of the requested resource\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.have.property('type', 'module');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Links are presents\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.links).to.be.not.null;\r",
+									"    pm.expect(jsonData.data.links.self).to.be.not.null;\r",
+									"    pm.expect(jsonData.data.links.schema).to.be.not.null;\r",
+									"    pm.expect(jsonData.data.links.history).to.be.not.null;\r",
+									"    pm.expect(jsonData.data.links.module_url).to.be.not.null;\r",
+									"    pm.expect(jsonData.data.links.tabs).to.be.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Datas attributes are set\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.attributes).to.be.not.null;\r",
+									"    pm.expect(jsonData.data.attributes.mod_name).to.be.not.null;\r",
+									"    pm.expect(jsonData.data.attributes.mod_type).to.be.not.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/modules/{{Sample_Locales_Module}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules",
+								"{{Sample_Locales_Module}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "module (not installed)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Response contains error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.be.have.property(\"errors\");\r",
+									"});\r",
+									"pm.test(\"Error says not installed\", function () {\r",
+									"    var jsonData  = pm.response.json();\r",
+									"    var jsonError = jsonData.errors;\r",
+									"    pm.expect(jsonError).to.have.property('code', 0);\r",
+									"    pm.expect(jsonError).to.have.property('message');\r",
+									"    pm.expect(jsonError.message).to.contain(\"not installed\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/legacy/modules/{{$randomBankAccountBic}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"legacy",
+								"modules",
+								"{{$randomBankAccountBic}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "status",
+			"item": [
+				{
+					"name": "status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status replies platform is online\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const data = jsonData.data;\r",
+									"\r",
+									"    pm.expect(data).to.be.an(\"object\");\r",
+									"    pm.expect(data).to.have.property('type');\r",
+									"    pm.expect(data.type).to.eq('api_status');\r",
+									"    pm.expect(data).to.have.property('attributes');\r",
+									"\r",
+									"    const attributes = data.attributes;\r",
+									"\r",
+									"    pm.expect(attributes).to.have.property('status', 'online');   \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/status",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tabs",
+			"item": [
+				{
+					"name": "Pin tabs module does not exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Message contains module does not exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.message).to.eql('The module toto is not active.');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n        \"type\": \"pinned_tab\",\r\n        \"id\": null,\r\n        \"attributes\": {\r\n            \"_tab_name\": \"about\"\r\n        }\r\n    },\r\n    {\r\n        \"type\": \"pinned_tab\",\r\n        \"id\": null,\r\n        \"attributes\": {\r\n            \"_tab_name\": \"view_history\"\r\n        }\r\n    }\r\n     \r\n    ]\r\n }\r\n"
+						},
+						"url": {
+							"raw": "{{Host}}/api/modules/toto/tabs",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules",
+								"toto",
+								"tabs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pin tabs tab does not exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Message contains module does not exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.message).to.eql(\"L'onglet tab_toto n'est pas présent pour le module system\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n        \"type\": \"pinned_tab\",\r\n        \"id\": null,\r\n        \"attributes\": {\r\n            \"_tab_name\": \"tab_toto\"\r\n        }\r\n    },\r\n    {\r\n        \"type\": \"pinned_tab\",\r\n        \"id\": null,\r\n        \"attributes\": {\r\n            \"_tab_name\": \"view_history\"\r\n        }\r\n    }\r\n     \r\n    ]\r\n }\r\n"
+						},
+						"url": {
+							"raw": "{{Host}}/api/modules/system/tabs",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules",
+								"system",
+								"tabs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create pinned tabs OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Meta as a count of 2\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const meta = jsonData.meta;\r",
+									"    pm.expect(meta.count).to.eql(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Objects have an id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    jsonData.data.each(function (elem) {\r",
+									"        pm.expect(elem.id).to.not.be.null;\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n        \"type\": \"pinned_tab\",\r\n        \"id\": null,\r\n        \"attributes\": {\r\n            \"_tab_name\": \"about\"\r\n        }\r\n    },\r\n    {\r\n        \"type\": \"pinned_tab\",\r\n        \"id\": null,\r\n        \"attributes\": {\r\n            \"_tab_name\": \"view_history\"\r\n        }\r\n    }\r\n     \r\n    ]\r\n }\r\n"
+						},
+						"url": {
+							"raw": "{{Host}}/api/modules/system/tabs",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules",
+								"system",
+								"tabs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pinned tabs OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Meta as a count of 2\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.meta.count).to.eql(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tabs are about and system\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    const tabs = ['about', 'view_history'];\r",
+									"\r",
+									"    jsonData.data.each(function (elem) {\r",
+									"        pm.expect(tabs.includes(elem.attributes._tab_name)).to.be.true;\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/modules/system/pin",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules",
+								"system",
+								"pin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pinned tabs module does not exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Message contains module does not exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.message).to.eql('The module toto is not active.');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/modules/toto/pin",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"modules",
+								"toto",
+								"pin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sender views list",
+			"item": [
+				{
+					"name": "sender views list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/system/viewSenders",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"viewSenders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{Auth_Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Auth_Username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

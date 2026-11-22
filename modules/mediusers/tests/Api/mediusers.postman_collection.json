@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "ef627a68-cf2a-4ea0-b8b7-964615ba3926",
+		"name": "mediusers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list mediusers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/mediuser/mediusers",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"mediuser",
+						"mediusers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show mediuser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response contains valid data\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data).to.be.an(\"object\");\r",
+							"});\r",
+							"pm.test(\"Data type is of the requested resource\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data).to.have.property('type', 'mediuser');\r",
+							"\r",
+							"    var userId = pm.environment.get('Sample_Mediuser');\r",
+							"\r",
+							"    pm.expect(jsonData.data).to.have.property('id', userId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/mediuser/mediusers/{{Sample_Mediuser}}",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"mediuser",
+						"mediusers",
+						"{{Sample_Mediuser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list functions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Response as code 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('All functions have \"text\" + \"group_id\" + \"is_main\"', function (){\r",
+							"    const json = pm.response.json();\r",
+							"\r",
+							"    let main_exists = false; \r",
+							"    json.data.each(function (elem) {\r",
+							"       pm.expect(elem.type).to.be.eq('function');\r",
+							"       pm.expect(elem.attributes.text).to.not.be.null;\r",
+							"       pm.expect(elem.attributes.group_id).to.not.be.null;\r",
+							"       pm.expect(elem.attributes.is_main).to.not.be.null;\r",
+							"\r",
+							"       if (elem.attributes.is_main) {\r",
+							"           main_exists = true;\r",
+							"       }\r",
+							"    });\r",
+							"\r",
+							"    pm.expect(main_exists).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/mediuser/mediusers/{{Sample_Mediuser}}/functions",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"mediuser",
+						"mediusers",
+						"{{Sample_Mediuser}}",
+						"functions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "import mediusers No file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Message is file is mandatory\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData.errors.message).to.contains('Un fichier doit être uploadé via le nom \\\"import_file\\\" pour l\\'import');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "ox-devtools",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Host}}/api/mediuser/mediusers?dry_run=0&update_found_users=1",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"mediuser",
+						"mediusers"
+					],
+					"query": [
+						{
+							"key": "dry_run",
+							"value": "0"
+						},
+						{
+							"key": "update_found_users",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{Auth_Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Auth_Username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

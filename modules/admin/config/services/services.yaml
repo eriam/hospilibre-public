@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autowire: false
+    autoconfigure: false
+
+  Hospilibre\Admin\CLDAP: ~
+
+  Hospilibre\Admin\Repositories\:
+    resource: '../../classes/Repositories/'

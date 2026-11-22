@@ -1,0 +1,142 @@
+<?php
+/**
+ * @package Hospilibre\Cabinet\Tests
+ * @author  SAS OpenXtrem <dev@openxtrem.com>
+ * @license https://www.gnu.org/licenses/gpl.html GNU General Public License
+ * @license https://www.openxtrem.com/licenses/oxol.html OXOL OpenXtrem Open License
+ */
+
+use Hospilibre\Cabinet\Tests\Functional\Pages\ComptabilitePage;
+use Hospilibre\Cabinet\Tests\Functional\Pages\ConsultationsPage;
+use Hospilibre\Cabinet\Tests\Functional\Pages\FacturationPage;
+use Hospilibre\Patients\Tests\Functional\Pages\DossierPatientPage;
+use Ox\Tests\SeleniumTestHospilibre;
+
+/**
+ * FacturationTest
+ *
+ * @description Test sur la facturation
+ *
+ * @screen FacturationPage
+ */
+class FacturationTest extends SeleniumTestHospilibre {
+  /** @var FacturationPage $page */
+  public $facturationPage;
+
+  public $chir_name = 'CHIRo Testo';
+  public $patientLastname = 'PatientLastname';
+
+  /**
+   * @inheritdoc
+   */
+  public function setUpPage() {
+    parent::setUpPage();
+    $this->facturationPage = new FacturationPage($this);
+  }
+
+  /**
+   * Nous testons l'ensemble de la facturation FranÎ·aise pour une consultation non issue des urgences:
+   * 1- Ajout d'un acte NGAP
+   * 2- Cloture de la cotation de consultation générant une facture
+   * 3- Vérification du montant total attendu de la facture
+   * 4- Visualisation du paiement Î° réaliser dans la compta
+   * 5- Modification de la répartition du montant avec vérification
+   * 6- Possibilité d'ajouter un rÎ¸glement partiel puis total
+   * 7- Visualisation des paiements réalisés dans la compta
+   *
+   * @config ref_pays 1
+   * @config [CConfiguration] dPfacturation CFactureCabinet use_auto_cloture 1
+   * @config [CConfiguration] dPfacturation CReglement use_echeancier 0
+   * @config [CConfiguration] dPfacturation CRelance use_relances 0
+   * @config [CConfiguration] dPccam codage use_cotation_ccam 1
+   */
+  public function testFacturationFRConsultationNormale() {
+    $this->importObject("dPcabinet/tests/Functional/data/consultation_test.xml");
+    $this->facturationPage->switchModule("dPpatients");
+    $patientsPage = new DossierPatientPage($this, false);
+    $patientsPage->searchPatientByName($this->patientLastname);
+    $patientsPage->selectPatientAndConsultation();
+
+    //1- Ajout d'un acte NGAP
+    $codage = new ConsultationsPage($this, false);
+    $codage->createNGAPact('C', '23');
+    $this->assertContains('Acte NGAP créé', $codage->getSystemMessage());
+
+    //2- Cloture de la cotation de consultation générant une facture
+    $this->facturationPage->testClotureCotation(true);
+    $this->assertContains('Consultation modifiée', $this->facturationPage->getSystemMessage());
+
+    //3- Vérification du montant total attendu de la facture
+    $this->assertContains('23', $this->facturationPage->testMontantAreglerPatient());
+
+    //4- Visualisation du paiement Î° réaliser dans la compta
+    //A réaliser
+
+    //5- Modification de la répartition du montant avec vérification
+    $this->facturationPage->testChangeRepartitionMontants(12, "tiers");
+    $this->assertContains('Facture modifiée', $this->facturationPage->getSystemMessage());
+    //Récupération du montant Î° régler patient pour vérifier que la modification est bonne
+    $this->assertContains('11', $this->facturationPage->testMontantAreglerPatient());
+
+    //6- Possibilité d'ajouter un rÎ¸glement partiel puis total
+    $this->facturationPage->testaddReglementPartiel(false, 5);
+    $this->assertContains('RÎ¸glement créé', $this->facturationPage->getSystemMessage());
+    $this->facturationPage->testaddReglementTotal();
+    $this->assertContains('RÎ¸glement créé', $this->facturationPage->getSystemMessage());
+
+    //7- Visualisation des paiements réalisés dans la compta
+    //A réaliser
+  }
+
+  /**
+   * Nous testons l'ensemble de la facturation FranÎ·aise pour une consultation issue des urgences:
+   * 1- Ajout d'un acte NGAP
+   * 2- Cloture de la cotation de consultation générant une facture
+   * 3 - Cloture de la facture
+   * 4- Vérification du montant total attendu de la facture
+   * 5- Visualisation du paiement Î° réaliser dans la compta
+   * 6- Possibilité d'ajouter un rÎ¸glement partiel puis total
+   * 7- Visualisation des paiements réalisés dans la compta
+   *
+   * @config ref_pays 1
+   * @config [CConfiguration] dPfacturation CFactureEtablissement use_auto_cloture 0
+   * @config [CConfiguration] dPfacturation CReglement use_echeancier 0
+   * @config [CConfiguration] dPfacturation CRelance use_relances 0
+   * @config [CConfiguration] dPccam codage use_cotation_ccam 1
+   */
+  public function testFacturationFRConsultationUrgence() {
+    $this->importObject("dPcabinet/tests/Functional/data/consultation_urgence_test.xml");
+    $this->facturationPage->switchModule("dPpatients");
+    $patientsPage = new DossierPatientPage($this, false);
+    $patientsPage->searchPatientByName($this->patientLastname);
+    $patientsPage->selectPatientAndConsultation();
+
+    //1- Ajout d'un acte NGAP
+    $codage = new ConsultationsPage($this, false);
+    $codage->createNGAPact('C', '23');
+    $this->assertContains('Acte NGAP créé', $codage->getSystemMessage());
+
+    //2- Cloture de la cotation de consultation générant une facture
+    $this->facturationPage->testClotureCotation(true);
+    $this->assertContains('Consultation modifiée', $this->facturationPage->getSystemMessage());
+
+    //3 - Cloture de la facture
+    $this->facturationPage->testClotureFacture();
+    $this->assertContains('Facture modifiée', $this->facturationPage->getSystemMessage());
+
+    //4- Vérification du montant total attendu de la facture
+    $this->assertContains('23', $this->facturationPage->testMontantAreglerPatient());
+
+    //5- Visualisation du paiement Î° réaliser dans la compta
+    //A réaliser
+
+    //6- Possibilité d'ajouter un rÎ¸glement partiel puis total
+    $this->facturationPage->testaddReglementPartiel(false, 5);
+    $this->assertContains('RÎ¸glement créé', $this->facturationPage->getSystemMessage());
+    $this->facturationPage->testaddReglementTotal();
+    $this->assertContains('RÎ¸glement créé', $this->facturationPage->getSystemMessage());
+
+    //7- Visualisation des paiements réalisés dans la compta
+    //A réaliser
+  }
+}

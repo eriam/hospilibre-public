@@ -1,0 +1,12 @@
+ipp,nom,prenom,naissance,sexe,service,motif_sejour
+CHU-0007742,MARTIN,Sophie,1979-03-14,f,cardiologie,Douleur thoracique atypique
+CHU-0007743,BERNARD,Ahmed,1951-11-02,m,pneumologie,Décompensation BPCO
+CHU-0007744,DA SILVA,Maria,1988-07-25,f,gynecologie-obstetrique,Surveillance de grossesse
+CHU-0007745,NGUYEN,Thi,1996-02-11,f,,
+CHU-0007746,KOWALSKI,Piotr,1943-09-30,m,geriatrie,Chute à domicile
+CHU-0007747,DUBOIS,Lucie,2014-06-18,f,pediatrie,Crise d'asthme
+CHU-0007748,MOREAU,Jean-Baptiste,1967-12-05,m,chirurgie-viscerale,Hernie inguinale
+CHU-0007749,BENALI,Fatima,1972-04-22,f,,Bilan d'anémie
+CHU-0007750,ROUSSEAU,Émile,1959-08-09,m,urologie,Rétention urinaire
+CHU-0007761,LEROY,Jean,1962-05-08,m,neurologie,Céphalées inhabituelles
+CHU-0007768,LEROY,Jean,1962-05-08,m,gastro-enterologie,Hémorragie digestive

@@ -1,0 +1,1465 @@
+{
+	"info": {
+		"_postman_id": "65c3ba8c-be52-4b87-8a4c-b0579c142295",
+		"name": "sample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9212318"
+	},
+	"item": [
+		{
+			"name": "Persons",
+			"item": [
+				{
+					"name": "list_persons",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Count and total are in meta\", function (){\r",
+									"    let json_body = pm.response.json();\r",
+									"    count = json_body.meta.count;\r",
+									"    pm.expect(json_body.meta.count).to.eql(5);\r",
+									"    pm.expect(json_body.meta.total).to.greaterThan(count);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each person have a profile picture\", function () {\r",
+									"    let json_body = pm.response.json();\r",
+									"    json_body.data.each(function (element) {\r",
+									"        pm.expect(element.type).to.eql('sample_person');\r",
+									"        pm.expect(element.links.profile_picture).to.contains('?m=files&raw=thumbnail&document_id=');\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/persons?limit=5",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list_persons_with_relations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each relationship have the right name and the right type\", function () {\r",
+									"    let json_body = pm.response.json();\r",
+									"    json_body.data.each(function (element) {\r",
+									"        pm.expect(element.type).to.eql('sample_person');\r",
+									"\r",
+									"        // Check for each relation the name of if and the data type.\r",
+									"        if (element.relationships.nationality) {\r",
+									"            pm.expect(element.relationships.nationality.data.type).to.eql('sample_nationality');\r",
+									"        }\r",
+									"        \r",
+									"        if (element.relationships.profilePicture) {\r",
+									"            pm.expect(element.relationships.profilePicture.data.type).to.eql('file');\r",
+									"        }\r",
+									"\r",
+									"        if (element.relationships.moviesPlayed) {\r",
+									"            element.relationships.moviesPlayed.data.each(function (movie_played) {\r",
+									"                pm.expect(movie_played.type).to.eql('sample_movie');\r",
+									"            });\r",
+									"        }\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/persons?limit=5&relations=all",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "relations",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Default fields are valued\", function (){\r",
+									"    let expected_person = pm.variables.get('person');\r",
+									"\r",
+									"    let person = pm.response.json().data;\r",
+									"    pm.expect(parseInt(person.id)).to.eql(pm.variables.get('person_id'));\r",
+									"    pm.expect(person.type).to.eql('sample_person');\r",
+									"    pm.expect(person.attributes.last_name).to.eql(expected_person.attributes.last_name);\r",
+									"    pm.expect(person.attributes.first_name).to.eql(expected_person.attributes.first_name);\r",
+									"    pm.expect(person.attributes.is_director).to.eql(expected_person.attributes.is_director);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Links are present\", function () {\r",
+									"    let person = pm.response.json().data;\r",
+									"\r",
+									"    let person_id = pm.variables.get('person_id');\r",
+									"\r",
+									"    pm.expect(person.links.self).to.contain('/api/sample/persons/' + person_id);\r",
+									"    pm.expect(person.links.schema).to.contain('/api/schemas/sample_person');\r",
+									"    pm.expect(person.links.history).to.contain('/api/history/sample_person/' + person_id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/fixtures/sample_director?relations=objectFixtures\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        const json = response.json();\r",
+									"        const id = json.data[0].attributes.object_id;\r",
+									"        let person = null;\r",
+									"\r",
+									"        json.included.each(function (elem) {\r",
+									"            if (elem.type == 'sample_person' && elem.id == id) {\r",
+									"                person = elem;\r",
+									"            }\r",
+									"        });\r",
+									"\r",
+									"        pm.variables.set(\"person\", person);\r",
+									"        pm.variables.set(\"person_id\", id);\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/persons/{{person_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons",
+								"{{person_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_person_does_not_exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is object not found\", function () {\r",
+									"    pm.expect(pm.response.json().errors.message).to.eql(\"Objet non trouvé\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set('not_exist_person_id', '999999999999999999999');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/persons/{{not_exist_person_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons",
+								"{{not_exist_person_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Returned data are the one posted\", function () {\r",
+									"    let data = pm.response.json().data[0];\r",
+									"    \r",
+									"    pm.expect(data.id).to.not.null;\r",
+									"    pm.expect(data.type).to.eql('sample_person');\r",
+									"    pm.expect(data.attributes.last_name).to.eql('person_from_api');\r",
+									"    pm.expect(data.attributes.first_name).to.eql('API');\r",
+									"    pm.expect(data.attributes.birthdate).to.eql('2000-01-01');\r",
+									"    pm.expect(data.attributes.sex).to.eql('f');\r",
+									"    pm.expect(data.attributes.is_director).to.eql(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": null,\r\n        \"type\": \"sample_person\",\r\n        \"attributes\": {\r\n            \"last_name\": \"person_from_api\",\r\n            \"first_name\": \"API\",\r\n            \"birthdate\": \"2000-01-01\",\r\n            \"sex\": \"f\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/persons?fieldsets=default,extra",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons"
+							],
+							"query": [
+								{
+									"key": "fieldsets",
+									"value": "default,extra"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_person_not_enough_fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message contains check value\", function() {\r",
+									"    let error = pm.response.json().errors;\r",
+									"    pm.expect(error.message).contain('Personne : Données incorrectes');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": null,\r\n        \"type\": \"sample_person\",\r\n        \"attributes\": {\r\n            \"last_name\": \"person_from_api\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/persons",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Field has been updated\", function() {\r",
+									"    let data = pm.response.json().data;\r",
+									"    pm.expect(parseInt(data.id)).to.eql(pm.variables.get('person_id'));\r",
+									"    pm.expect(data.attributes.last_name).to.eql('new_person_name');\r",
+									"\r",
+									"    let old_person = pm.variables.get('person');\r",
+									"    pm.expect(data.attributes.first_name).to.eql(old_person.attributes.first_name);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/fixtures/sample_actor_1?relations=objectFixtures\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        const json = response.json();\r",
+									"        const id = json.data[0].attributes.object_id;\r",
+									"        let person = null;\r",
+									"\r",
+									"        json.included.each(function (elem) {\r",
+									"            if (elem.type == 'sample_person' && elem.id == id) {\r",
+									"                person = elem;\r",
+									"            }\r",
+									"        });\r",
+									"\r",
+									"        pm.variables.set(\"person\", person);\r",
+									"        pm.variables.set(\"person_id\", id);\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\":{{person_id}},\r\n        \"type\": \"sample_person\",\r\n        \"attributes\": {\r\n            \"last_name\": \"new_person_name\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/persons/{{person_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons",
+								"{{person_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_person_does_not_exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Expected error to be 'Object not found'\", function() {\r",
+									"    pm.expect(pm.response.json().errors.message).to.eql('Objet non trouvé');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set('not_exist_person_id', '999999999999999999999');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": null,\r\n        \"type\": \"sample_person\",\r\n        \"attributes\": {\r\n            \"last_name\": \"new_person_name\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/persons/{{not_exist_person_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons",
+								"{{not_exist_person_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"// This also assert that calling this route for a non existing person return 404.\r",
+									"pm.test(\"Person has been deleted\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/sample/persons/\" + pm.variables.get('person_id'),\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    }, function (err, response) {\r",
+									"        pm.expect(response.status).to.eql('Not Found');\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Need to create the person that will be deleted.\r",
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/sample/persons\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\"), \"Content-Type\": \"application/vnd.api+json\"},\r",
+									"        \"method\": 'POST',\r",
+									"        \"body\": {\r",
+									"            \"mode\": \"raw\",\r",
+									"            \"raw\": JSON.stringify(\r",
+									"                {\r",
+									"                    data: {\r",
+									"                        id: null,\r",
+									"                        type: \"sample_person\",\r",
+									"                        attributes: {\r",
+									"                            last_name: \"test_delete\",\r",
+									"                            first_name: \"test_delete\"\r",
+									"                        }\r",
+									"                    }\r",
+									"                }\r",
+									"            )\r",
+									"        }\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        pm.variables.set(\"person_id\", response.json().data[0].id);\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/persons/{{person_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"persons",
+								"{{person_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "list_categories_filter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('All categories names are Horreur', function () {\r",
+									"    let data = pm.response.json().data;\r",
+									"\r",
+									"    data.each(function (category) {\r",
+									"        pm.expect(category.type).to.eql('sample_category');\r",
+									"        pm.expect(category.attributes.name).to.eql('Horreur');\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/categories?filter=name.equal.Horreur",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "name.equal.Horreur"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nationalities",
+			"item": [
+				{
+					"name": "list_nationalities_filter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('All nationalities have the name Finlandaise', function () {\r",
+									"    let nationalities = pm.response.json().data;\r",
+									"\r",
+									"    nationalities.each(function (nationality) {\r",
+									"        pm.expect(nationality.type).to.eql('sample_nationality');\r",
+									"        pm.expect(nationality.attributes.name).to.eql('Finlandaise');\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/nationalities?filter=name.equal.Finlandaise",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"nationalities"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "name.equal.Finlandaise"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "list_movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All objects are sample_movie and have a cover link\", function () {\r",
+									"    let json_body = pm.response.json();\r",
+									"\r",
+									"    // Maximul 5 movies are requested.\r",
+									"    // If the fixtures are not loaded with --full there can be less than 5 movies.\r",
+									"    pm.expect(json_body.meta.count).to.lessThan(5);\r",
+									"\r",
+									"    json_body.data.each(function (movie) {\r",
+									"        pm.expect(movie.type).to.eql('sample_movie');\r",
+									"        if (movie.links.cover) {\r",
+									"            pm.expect(movie.links.cover).contain('?m=files&raw=thumbnail&document_id=');\r",
+									"        }\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/movies?limit=5",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list_movies_with_relations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All relations have the right name and type\", function () {\r",
+									"    let json_body = pm.response.json();\r",
+									"\r",
+									"    json_body.data.each(function (element) {\r",
+									"        pm.expect(element.type).to.eql('sample_movie');\r",
+									"\r",
+									"        // Check for each relation the name of if and the data type.\r",
+									"        pm.expect(element.relationships.director.data.type).to.eql('sample_person');\r",
+									"        pm.expect(element.relationships.category.data.type).to.eql('sample_category');\r",
+									"\r",
+									"         if (element.relationships.cover) {\r",
+									"            pm.expect(element.relationships.cover.data.type).to.eql('file');\r",
+									"        }\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/movies?limit=5&relations=all",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "relations",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Default fields are valued\", function (){\r",
+									"    let expected_movie = pm.variables.get('movie');\r",
+									"\r",
+									"    let movie = pm.response.json().data;\r",
+									"    pm.expect(parseInt(movie.id)).to.eql(pm.variables.get('movie_id'));\r",
+									"    pm.expect(movie.type).to.eql('sample_movie');\r",
+									"    pm.expect(movie.attributes.name).to.eql(expected_movie.attributes.name);\r",
+									"    pm.expect(movie.attributes.release).to.eql(expected_movie.attributes.release);\r",
+									"    pm.expect(movie.attributes.duration).to.eql(expected_movie.attributes.duration);\r",
+									"    pm.expect(movie.attributes.languages).to.eql(expected_movie.attributes.languages);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Links are present\", function () {\r",
+									"    let movie = pm.response.json().data;\r",
+									"\r",
+									"    let movie_id = pm.variables.get('movie_id');\r",
+									"\r",
+									"    pm.expect(movie.links.self).to.contain('/api/sample/movies/' + movie_id);\r",
+									"    pm.expect(movie.links.schema).to.contain('/api/schemas/sample_movie');\r",
+									"    pm.expect(movie.links.history).to.contain('/api/history/sample_movie/' + movie_id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/fixtures/sample_movie_1?relations=objectFixtures&fieldsets=objectFixtures.default,objectFixtures.details\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        const json = response.json();\r",
+									"        const id = json.data[0].attributes.object_id;\r",
+									"        let movie = null;\r",
+									"\r",
+									"        json.included.each(function (elem) {\r",
+									"            if (elem.type == 'sample_movie' && elem.id == id) {\r",
+									"                movie = elem;\r",
+									"            }\r",
+									"        });\r",
+									"\r",
+									"        pm.variables.set(\"movie\", movie);\r",
+									"        pm.variables.set(\"movie_id\", id);\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/movies/{{movie_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies",
+								"{{movie_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_movie_does_not_exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is 'Object not found'\", function (){\r",
+									"    pm.expect(pm.response.json().errors.message).to.eql('Objet non trouvé');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set('not_exist_movie_id', '999999999999999999999');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/sample/movies/{{not_exist_movie_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies",
+								"{{not_exist_movie_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_movie",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"post_movie_name\", Math.random().toString(36).replace(/[^a-z]+/g, ''));\r",
+									"\r",
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/fixtures/sample_director\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        pm.variables.set(\"director_id\", response.json().data[0].attributes.object_id);\r",
+									"    }\r",
+									");\r",
+									"\r",
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/fixtures/sample_actor_1\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        pm.variables.set(\"actor_1_id\", response.json().data[0].attributes.object_id);\r",
+									"    }\r",
+									");\r",
+									"\r",
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/fixtures/sample_actor_2\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        pm.variables.set(\"actor_2_id\", response.json().data[0].attributes.object_id);\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Fields are valued from the post body\", function () {\r",
+									"    let data = pm.response.json().data[0];\r",
+									"\r",
+									"    pm.expect(data.type).to.eql('sample_movie');\r",
+									"\r",
+									"    let movie = data.attributes;\r",
+									"    // Check refs\r",
+									"    // This should be move to relationships later !\r",
+									"    pm.expect(parseInt(data.relationships.category.data.id)).to.eql(parseInt(pm.collectionVariables.get('category_id')));\r",
+									"    pm.expect(parseInt(data.relationships.director.data.id)).to.eql(parseInt(pm.variables.get('director_id')));\r",
+									"\r",
+									"    // Check fields\r",
+									"    pm.expect(movie.name).to.eql(pm.variables.get('post_movie_name'))\r",
+									"    pm.expect(movie.release).to.eql('2000-01-01');\r",
+									"    pm.expect(movie.duration).to.eql('00:32:00');\r",
+									"    \r",
+									"    // Default value for languages is fr.\r",
+									"    pm.expect(movie.languages).to.eql('fr');\r",
+									"\r",
+									"    // Those fields are not set, they should be null.\r",
+									"    pm.expect(movie.description).to.null;\r",
+									"    pm.expect(movie.csa).to.null;\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": null,\r\n        \"type\": \"sample_movie\",\r\n        \"attributes\": {\r\n            \"name\": \"{{post_movie_name}}\",\r\n            \"release\": \"2000-01-01\",\r\n            \"duration\": \"00:32:00\"\r\n        },\r\n        \"relationships\": {\r\n            \"category\": {\r\n                \"data\": {\"type\": \"sample_category\", \"id\": {{category_id}}}\r\n            },\r\n            \"director\": {\r\n                \"data\": {\"type\": \"sample_person\", \"id\": {{director_id}}}\r\n            },\r\n            \"casting\": {\r\n                \"data\": [\r\n                    {\"type\": \"sample_casting\", \"id\": null, \"attributes\": {\"actor_id\": {{actor_1_id}}}},\r\n                    {\"type\": \"sample_casting\", \"id\": null, \"attributes\": {\"actor_id\": {{actor_2_id}}, \"is_main_actor\": true}}\r\n                ]\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/movies?fieldsets=default,details&relations=category,director",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "fieldsets",
+									"value": "default,details"
+								},
+								{
+									"key": "relations",
+									"value": "category,director"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_movie_not_enough_fields",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"post_movie_name\", Math.random().toString(36).replace(/[^a-z]+/g, ''));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Message contains 'Duration cannot be null'\", function () {\r",
+									"    let message = pm.response.json().errors.message;\r",
+									"    pm.expect(message).to.contain(\"<strong title='duration'>Durée</strong> : Ne peut pas avoir une valeur nulle\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Message contains 'Category cannot be null'\", function () {\r",
+									"    let message = pm.response.json().errors.message;\r",
+									"    pm.expect(message).to.contain(\"<strong title='category_id'>Catégorie</strong> : Ne peut pas avoir une valeur nulle\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": null,\r\n        \"type\": \"sample_movie\",\r\n        \"attributes\": {\r\n            \"name\": \"{{post_movie_name}}\",\r\n            \"release\": \"2000-01-01\",\r\n            \"director_id\": {{director_id}}\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/movies",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_movie",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/fixtures/sample_movie_1?relations=objectFixtures\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        const id = response.json().data[0].attributes.object_id;\r",
+									"\r",
+									"        pm.sendRequest(\r",
+									"            {\r",
+									"                \"url\": pm.environment.get('Host') + \"/api/sample/movies/\" + id + \"?relations=director,category\",\r",
+									"                \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"            },\r",
+									"            function (err, response) {\r",
+									"                const json = response.json();\r",
+									"                pm.variables.set(\"movie\", json.data);\r",
+									"                pm.variables.set(\"movie_id\", json.data.id);\r",
+									"            }\r",
+									"        );\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Fields are valued from the post body\", function () {\r",
+									"    let movie = pm.response.json().data;\r",
+									"    let old_movie = pm.variables.get('movie');    \r",
+									"\r",
+									"    pm.expect(movie.id).to.eql(pm.variables.get('movie_id'));\r",
+									"    pm.expect(movie.type).to.eql('sample_movie');\r",
+									"\r",
+									"    pm.expect(movie.attributes.release).to.eql('2000-01-02');\r",
+									"    pm.expect(movie.attributes.name).to.eql(old_movie.attributes.name);\r",
+									"    pm.expect(movie.attributes.duration).to.eql(old_movie.attributes.duration);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": {{movie_id}},\r\n        \"type\": \"sample_movie\",\r\n        \"attributes\": {\r\n            \"release\": \"2000-01-02\"\r\n        },\r\n        \"relationships\": {\r\n            \"category\": {\r\n                \"data\": {\"type\": \"sample_category\", \"id\": {{category_id}}}\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/movies/{{movie_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies",
+								"{{movie_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_movie_does_not_exists",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set('not_exist_movie_id', '999999999999999999999');"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is 'Object not found'\", function () {\r",
+									"    pm.expect(pm.response.json().errors.message).to.eql('Objet non trouvé');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": null,\r\n        \"type\": \"sample_movie\",\r\n        \"attributes\": {\r\n            \"release\": \"2000-01-02\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/movies/{{not_exist_movie_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies",
+								"{{not_exist_movie_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"// This also assert that calling this route for a non existing movie return 404.\r",
+									"pm.test(\"Person has been deleted\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/sample/movies/\" + pm.variables.get('movie_id'),\r",
+									"        \"header\": {\"Authorization\": pm.variables.get(\"auth\")}\r",
+									"    }, function (err, response) {\r",
+									"        pm.expect(response.status).to.eql('Not Found');\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"delete_movie_name\", Math.random().toString(36).replace(/[^a-z]+/g, ''));\r",
+									"\r",
+									"// Add the authentication to the request.\r",
+									"// Change this when the API to get objects from fixture will be done.\r",
+									"// Actually could be achieve by setting this value in 'list_categories_filter' test.\r",
+									"pm.sendRequest(\r",
+									"    {\r",
+									"        \"url\": pm.environment.get('Host') + \"/api/sample/categories?limit=1\",\r",
+									"        \"header\": {\"Authorization\": pm.variables.get('auth')}\r",
+									"    },\r",
+									"    function (err, response) {\r",
+									"        pm.variables.set(\"category_id\", response.json().data[0].id);\r",
+									"\r",
+									"        pm.sendRequest(\r",
+									"            {\r",
+									"                \"url\": pm.environment.get('Host') + \"/api/sample/persons?limit=1\",\r",
+									"                \"header\": {\"Authorization\": pm.variables.get('auth')}\r",
+									"            },\r",
+									"            function (err, response) {\r",
+									"                pm.variables.set(\"person_id\", response.json().data[0].id);\r",
+									"\r",
+									"                // Need to create the movie that will be deleted.\r",
+									"                pm.sendRequest(\r",
+									"                    {\r",
+									"                        \"url\": pm.environment.get('Host') + \"/api/sample/movies\",\r",
+									"                        \"header\": {\"Authorization\": pm.variables.get(\"auth\"), \"Content-Type\": \"application/vnd.api+json\"},\r",
+									"                        \"method\": 'POST',\r",
+									"                        \"body\": {\r",
+									"                            \"mode\": \"raw\",\r",
+									"                            \"raw\": JSON.stringify(\r",
+									"                                {\r",
+									"                                    data: {\r",
+									"                                        id: null,\r",
+									"                                        type: \"sample_movie\",\r",
+									"                                        attributes: {\r",
+									"                                            name: pm.variables.get('delete_movie_name'),\r",
+									"                                            release: \"2000-01-01\",\r",
+									"                                            duration: \"00:32:00\",\r",
+									"                                            category_id: pm.variables.get('category_id'),\r",
+									"                                            director_id: pm.variables.get('person_id')\r",
+									"                                        }\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            )\r",
+									"                        }\r",
+									"                    },\r",
+									"                    function (err, response) {\r",
+									"                        pm.variables.set(\"movie_id\", response.json().data[0].id);\r",
+									"                    }\r",
+									"                );\r",
+									"            }\r",
+									"        );\r",
+									"    }\r",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/sample/movies/{{movie_id}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"sample",
+								"movies",
+								"{{movie_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{Auth_Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Auth_Username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Before each test set the 'auth' var to the auth method.",
+					"// This will be used for pre-request scripts to create or get data.",
+					"pm.variables.set(\"auth\", \"Basic \" + btoa(pm.environment.get('Auth_Username') + ':' + pm.environment.get('Auth_Password')));",
+					"",
+					"if (!pm.collectionVariables.get('category_id')) {",
+					"    pm.sendRequest(",
+					"        {",
+					"            \"url\": pm.environment.get('Host') + \"/api/sample/categories?limit=1\",",
+					"            \"header\": {\"Authorization\": pm.variables.get('auth')}",
+					"        },",
+					"        function (err, response) {",
+					"            pm.collectionVariables.set(\"category_id\", response.json().data[0].id);",
+					"        }",
+					"    );",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "category_id",
+			"value": ""
+		}
+	]
+}

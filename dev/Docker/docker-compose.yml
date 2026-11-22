@@ -1,0 +1,68 @@
+# HospiLibre — environnement de référence (Phase 1)
+# Usage depuis dev/Docker/ :
+#   docker compose build
+#   docker compose up -d
+#   docker compose exec -T app dev/Docker/install.sh     # install non-interactive (smoke)
+#   docker compose exec -T app tools/smoke.sh            # filet complet
+name: hospilibre
+
+services:
+  app:
+    build: .
+    image: hospilibre-app:8.1
+    working_dir: /var/www/html
+    volumes:
+      - ../../:/var/www/html
+    ports:
+      - "8088:80"
+    environment:
+      APP_ENV: dev
+      APP_DEBUG: "1"
+      # Paramètres consommés par dev/Docker/install.sh
+      DB_HOST: db
+      DB_USER: root
+      DB_PASS: "oxdev17!"
+      REDIS_HOST: redis
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  db:
+    image: mariadb:10.6
+    environment:
+      MARIADB_ROOT_PASSWORD: "oxdev17!"
+    # LA COLLATION DOIT SUIVRE CELLE DU DUMP D'AMORÇAGE, pas l'inverse.
+    #
+    # cli/sql/hospilibre.sql crée ses 18 tables avec un COLLATE=utf8mb4_general_ci EXPLICITE.
+    # Imposer utf8mb4_unicode_ci au serveur ne les change donc pas — mais toutes les tables
+    # créées ENSUITE par les révisions de modules (module_action…) naissent en unicode_ci, et
+    # la révision system 1.1.68 joint les deux :
+    #   UPDATE access_log SET module_action_id = (SELECT … WHERE ma.module = access_log.module)
+    #   → Illegal mix of collations (utf8mb4_unicode_ci) and (utf8mb4_general_ci)
+    #
+    # `system` restait bloqué en 1.1.68 au lieu de 1.5.8, et TOUT le reste cascadait en
+    # « Failed module dependency for 'system' ». Conséquence visible : la table
+    # fixtures_reference n'existait pas, donc le seeder ne pouvait rien écrire.
+    #
+    # La production (mariadb:10.11 sans option) garde le défaut general_ci et ne connaît pas ce
+    # problème : seul cet environnement-ci divergeait. L'alternative — convertir les 18 tables du
+    # dump en unicode_ci — est plus lourde et n'apporte rien ici.
+    command: >-
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --sql-mode=
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - db_data:/var/lib/mysql
+
+  redis:
+    image: redis:7-alpine
+
+volumes:
+  db_data:

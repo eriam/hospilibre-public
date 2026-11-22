@@ -1,0 +1,58 @@
+# HospiLibre — filet de non-régression (Phase 1)
+# Enchaîne, sur chaque push / PR : php -l → check_refs → smoke boot → smoke install →
+# PHPUnit → audit licences. Tout rouge bloque la PR.
+#
+# Choix : on réutilise EXACTEMENT l'environnement de référence (dev/Docker) via docker
+# compose, pour garantir la parité CI ↔ poste de dev (même PHP 8.1, mêmes extensions,
+# même MariaDB, même procédure d'install non-interactive).
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+# Évite les exécutions concurrentes redondantes sur une même branche
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  filet:
+    name: Filet de non-régression
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dev/Docker
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Construire l'image de référence (PHP 8.1)
+        run: docker compose build
+
+      - name: Démarrer les services (app + MariaDB + Redis)
+        run: docker compose up -d
+
+      - name: Attendre que MariaDB soit prête
+        run: |
+          for i in $(seq 1 30); do
+            s=$(docker inspect --format '{{.State.Health.Status}}' hospilibre-db-1 2>/dev/null || echo none)
+            echo "db health: $s"; [ "$s" = "healthy" ] && exit 0; sleep 3
+          done
+          echo "MariaDB jamais healthy"; exit 1
+
+      # SMOKE INSTALL : composer install + génération includes/* + création du schéma.
+      # Un fatal ici fait échouer le job.
+      - name: Install non-interactive (smoke install)
+        run: docker compose exec -T app bash dev/Docker/install.sh
+
+      - name: Droits d'écriture (tmp, files) pour Apache
+        run: docker compose exec -T app chmod -R 777 tmp files
+
+      # Filet complet : php -l, check_refs (vs baseline), boot CLI, boot HTTP, PHPUnit, audit.
+      - name: Filet (tools/smoke.sh)
+        run: docker compose exec -T -e SMOKE_URL=http://localhost app bash tools/smoke.sh
+
+      - name: Logs en cas d'échec
+        if: failure()
+        run: docker compose logs --tail=100

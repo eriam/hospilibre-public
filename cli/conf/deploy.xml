@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<groups>
+  <group name="hospilibre">
+    <instance path="/var/www/html" shortname="hospilibre" />
+  </group>
+</groups>

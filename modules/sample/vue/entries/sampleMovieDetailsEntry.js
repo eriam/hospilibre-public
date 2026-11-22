@@ -1,0 +1,29 @@
+import Vue from "vue"
+import SampleMovieDetails from "@modules/sample/vue/views/SampleMovieDetails/SampleMovieDetails.vue"
+import OxVueWrap from "@/core/components/OxVueWrap/OxVueWrap.vue"
+
+/* eslint-disable */
+const element = $("SampleMovieDetails")
+
+if (element) {
+    if (window.NodeList && !NodeList.prototype.forEach) {
+        NodeList.prototype.forEach = Array.prototype.forEach
+    }
+
+    let vueProps = ""
+    for (let i = 0; i < element.attributes.length; i++){
+        const _attribute = element.attributes[i]
+        const _attributeName = _attribute.nodeName
+        if ((_attributeName.indexOf("vue-") === 0 || _attributeName.indexOf(":vue-") === 0)) {
+            vueProps += _attributeName.replace("vue-", "") + "='" + _attribute.nodeValue + "' "
+        }
+    }
+
+    new Vue({
+        template: '<OxVueWrap><sample-movie-details ' + vueProps + '/></OxVueWrap>',
+        components: {
+            SampleMovieDetails,
+            OxVueWrap
+        }
+    }).$mount(element)
+}

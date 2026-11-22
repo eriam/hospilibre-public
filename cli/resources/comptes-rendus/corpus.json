@@ -1,0 +1,224 @@
+{
+  "version": 1,
+  "licence": "GNU GPL — corpus original Hospilibre, écrit à la main. Voir dev/corpus-comptes-rendus.md",
+  "placeholders": [
+    "acte",
+    "duree",
+    "asa",
+    "chirurgien",
+    "anesthesiste",
+    "installation"
+  ],
+  "installations": [
+    "décubitus dorsal, bras le long du corps",
+    "décubitus dorsal, bras en abduction",
+    "décubitus dorsal, jambes écartées",
+    "position proclive, bras gauche le long du corps"
+  ],
+  "ouvertures": {
+    "generique": [
+      "Patient installé en {installation}. Vérification de l'identité et du site opératoire menée avec l'équipe avant incision. Badigeonnage, champage.",
+      "Installation en {installation}. Check-list de sécurité renseignée et contrôlée en présence de l'équipe. Antisepsie en deux temps, mise en place des champs.",
+      "Mise en place en {installation}. Contrôle croisé de l'identité, du côté et de la nature de l'intervention. Préparation cutanée, champage stérile."
+    ]
+  },
+  "gestes": {
+    "generique": [
+      "Abord selon la voie habituelle pour {acte}. Exploration de la région opératoire, repérage des structures à respecter. Réalisation du geste prévu, de façon réglée et sans difficulté particulière. Contrôle de l'hémostase, vérification de l'absence de corps étranger.",
+      "Voie d'abord adaptée à {acte}. Dissection prudente plan par plan, identification des repères anatomiques avant tout geste de section. Le temps principal se déroule sans incident. Hémostase soigneuse, lavage, contrôle final de la cavité.",
+      "Abord conduit pour {acte}. Exposition satisfaisante, exploration première de la région. Le geste est mené selon la technique habituelle. Vérification de l'hémostase et de l'intégrité des structures voisines en fin de temps opératoire."
+    ],
+    "HMFC004": [
+      "Création du pneumopéritoine à l'open-cœlioscopie, mise en place des trocarts sous contrôle de la vue. Exploration de la cavité abdominale. Exposition du pédicule cystique, dissection du triangle de Calot jusqu'à l'obtention de la vue critique de sécurité. Clippage et section du canal cystique puis de l'artère cystique. Décollement de la vésicule du lit hépatique à l'électrocoagulation. Extraction protégée. Contrôle de l'hémostase du lit vésiculaire, exsufflation.",
+      "Open-cœlioscopie sus-ombilicale, pneumopéritoine, trocarts opérateurs sous contrôle visuel. Vésicule d'allure inflammatoire modérée, libérée de ses adhérences. Dissection du triangle de Calot, identification formelle du canal et de l'artère cystiques avant toute section. Clippage, section, cholécystectomie rétrograde. Extraction dans un sac. Lavage, contrôle du lit vésiculaire, exsufflation sous contrôle.",
+      "Mise en place des trocarts après open-cœlioscopie. Exploration : pas d'épanchement, foie d'aspect normal. Abord du pédicule cystique, obtention de la vue critique de sécurité. Clips sur le canal cystique et sur l'artère, section. Décollement du lit hépatique. Extraction protégée, lavage, hémostase contrôlée, exsufflation."
+    ],
+    "HHFA016": [
+      "Cœlioscopie, trocart ombilical et deux trocarts opérateurs. Appendice retrouvé en position latéro-cæcale, inflammatoire, sans perforation. Squelettisation du méso-appendice, section entre clips. Section de la base appendiculaire après mise en place d'endoloops. Extraction protégée. Lavage de la fosse iliaque droite, aspiration, contrôle de l'hémostase, exsufflation.",
+      "Abord cœlioscopique. Appendice en position rétro-cæcale, adhérent, libéré progressivement. Méso-appendice coagulé et sectionné. Base appendiculaire liée et sectionnée. Extraction dans un sac, lavage abondant du cul-de-sac, vérification de l'hémostase. Exsufflation sous contrôle de la vue.",
+      "Cœlioscopie trois trocarts. Exploration : appendice turgescent, épanchement réactionnel minime prélevé. Appendicectomie réglée après squelettisation et ligature de la base. Extraction protégée, lavage-aspiration, contrôle final, exsufflation."
+    ],
+    "LMMA012": [
+      "Incision inguinale, ouverture de l'aponévrose du grand oblique. Repérage et mise sur lacs du nerf ilio-inguinal. Dissection du cordon, individualisation du sac herniaire, réduction sans ouverture. Mise en place d'une prothèse préfaçonnée, fixée sans tension selon la technique de Lichtenstein. Contrôle de l'hémostase.",
+      "Voie inguinale. Ouverture du canal, respect des éléments nerveux repérés d'emblée. Sac herniaire indirect disséqué et réduit en intra-abdominal. Renfort pariétal par prothèse non résorbable, fixation ménageant le cordon. Hémostase soigneuse.",
+      "Abord inguinal classique. Dissection du cordon et du sac, réduction du contenu herniaire. Pose d'une plaque prothétique sans tension, amarrage limité aux points nécessaires. Vérification de l'absence de compression du cordon."
+    ],
+    "EGFA001": [
+      "Installation en position gynécologique, anuscopie première. Trois paquets hémorroïdaires repérés. Hémorroïdectomie pédiculaire semi-fermée selon Milligan-Morgan : exérèse de chaque paquet après ligature du pédicule, en respectant les ponts cutanéo-muqueux. Hémostase soigneuse.",
+      "Position gynécologique, exploration ano-rectale sous anesthésie. Maladie hémorroïdaire de stade avancé, trois paquets. Exérèse pédiculaire semi-fermée paquet par paquet, ligature sélective des pédicules, conservation des ponts muqueux. Contrôle de l'hémostase.",
+      "Anuscopie et exploration première. Hémorroïdectomie pédiculaire conduite sur les paquets principaux, ligature haute des pédicules, plaies laissées semi-ouvertes. Hémostase vérifiée."
+    ],
+    "HHFA017": [
+      "Laparotomie médiane. Exploration : pas de carcinose, foie d'aspect normal. Libération du côlon gauche, repérage de l'uretère gauche. Ligature des vaisseaux à leur origine. Section colique et rectale à distance de la lésion. Rétablissement de la continuité par anastomose mécanique, contrôlée à l'air sous eau. Vérification de la vascularisation et de l'absence de tension.",
+      "Abord médian. Mobilisation du segment colique concerné, repérage urétéral systématique avant toute ligature. Contrôle vasculaire premier. Résection emportant la lésion avec des marges macroscopiquement saines. Anastomose colorectale mécanique, test d'étanchéité satisfaisant. Lavage et drainage de contact.",
+      "Laparotomie, exploration complète de la cavité. Résection segmentaire après libération et contrôle des pédicules. Rétablissement immédiat de la continuité, anastomose vérifiée. Hémostase, lavage, drainage de contact."
+    ],
+    "HHFA008": [
+      "Cœlioscopie, exploration de la cavité. Décollement colo-épiploïque, libération de l'angle colique droit. Repérage du duodénum et de l'uretère droit. Contrôle vasculaire à l'origine. Résection iléo-colique droite, anastomose iléo-transverse mécanique. Contrôle de la vascularisation et de l'étanchéité. Extraction protégée de la pièce.",
+      "Abord cœlioscopique. Libération du côlon droit de dedans en dehors, ligature des vaisseaux à leur origine. Section iléale et colique, rétablissement de la continuité par anastomose latéro-latérale mécanique. Vérification de l'absence de torsion et de tension. Lavage, extraction de la pièce.",
+      "Cœlioscopie première, exploration sans anomalie associée. Colectomie droite réglée avec curage attenant. Anastomose iléo-transverse, contrôlée. Pièce extraite protégée et confiée à l'anatomopathologie. Lavage, hémostase."
+    ],
+    "LMMA004": [
+      "Reprise de la cicatrice médiane, dissection des plans jusqu'à l'aponévrose. Libération du sac éventratif, réduction du contenu après adhésiolyse prudente. Rapprochement aponévrotique et renfort par prothèse en position rétro-musculaire. Drainage aspiratif mis en place.",
+      "Excision de l'ancienne cicatrice. Adhésiolyse pariétale menée au contact, sans ouverture digestive. Réduction du contenu, rapprochement des berges aponévrotiques. Mise en place d'une prothèse largement débordante, fixée sans tension. Drainage.",
+      "Abord sur la cicatrice préexistante. Dissection du collet, réduction du sac. Réparation pariétale avec renfort prothétique, recouvrement complet du défect. Hémostase, drainage de l'espace de décollement."
+    ],
+    "HFFA006": [
+      "Laparotomie médiane sus-ombilicale. Exploration : pas d'atteinte péritonéale. Libération gastrique, contrôle des pédicules. Gastrectomie partielle inférieure emportant la lésion. Rétablissement par anastomose gastro-jéjunale mécanique, contrôlée. Vérification de l'étanchéité, lavage, drainage.",
+      "Abord médian. Mobilisation de l'estomac, section duodénale et gastrique après contrôle vasculaire. Anastomose gastro-jéjunale sur anse en Y, calibre satisfaisant. Test d'étanchéité négatif. Lavage abondant, drainage.",
+      "Laparotomie, exploration première. Gastrectomie partielle réglée avec curage ganglionnaire attenant. Rétablissement de la continuité, anastomose vérifiée en vascularisation et en tension. Pièce orientée et confiée à l'anatomopathologie. Drainage."
+    ]
+  },
+  "incidents": {
+    "conversion": [
+      "Au cours de la dissection, les conditions locales ne permettent pas de poursuivre en sécurité par voie cœlioscopique : décision de conversion en voie ouverte. Laparotomie adaptée, le geste est alors mené à son terme sans difficulté supplémentaire. La conversion est expliquée au patient et notée au dossier.",
+      "Les adhérences et le défaut d'exposition font prendre la décision de convertir en voie ouverte, avant toute manœuvre à risque. L'intervention se poursuit par laparotomie et s'achève de façon réglée. Conversion tracée et expliquée en postopératoire.",
+      "Devant une anatomie non identifiable en toute sécurité sous cœlioscopie, conversion décidée d'emblée plutôt que de poursuivre. Le reste du geste se déroule sans incident par voie ouverte."
+    ],
+    "hemorragie": [
+      "Survenue en peropératoire d'un saignement actif nécessitant une hémostase appuyée. Contrôle obtenu après compression et hémostase élective. L'anesthésiste est informé en temps réel ; la stabilité hémodynamique est maintenue. Surveillance rapprochée demandée en postopératoire.",
+      "Saignement peropératoire non prévu, de moyenne abondance. Compression première, puis hémostase sélective après exposition. Le contrôle est satisfaisant en fin d'intervention. Information de l'équipe d'anesthésie et surveillance renforcée au décours.",
+      "Incident hémorragique au temps de dissection. Arrêt du geste, compression, exposition élargie et hémostase dirigée. Pas de poursuite du saignement en fin d'intervention. Consigne de surveillance et contrôle biologique postopératoire."
+    ],
+    "plaie_organe": [
+      "Constatation d'une effraction accidentelle d'un organe de voisinage au cours de la dissection. Réparation immédiate dans le même temps opératoire, contrôlée et étanche. Lavage abondant, drainage de contact mis en place. Information du patient prévue et notée au dossier.",
+      "Plaie accidentelle d'un organe adjacent, reconnue d'emblée. Suture immédiate, vérification de l'étanchéité satisfaisante. Drainage de proximité, antibioprophylaxie poursuivie. Surveillance clinique rapprochée demandée.",
+      "Effraction d'un organe de voisinage lors de l'adhésiolyse. Réparation faite dans le même temps, contrôle de l'étanchéité. Drainage, lavage, et consignes de surveillance postopératoire précisées."
+    ],
+    "anesthesie": [
+      "Incident survenu pendant la prise en charge anesthésique, pris en charge par l'équipe d'anesthésie en peropératoire. Le geste chirurgical est interrompu le temps de la stabilisation puis mené à son terme. Surveillance postopératoire renforcée.",
+      "Événement indésirable d'ordre anesthésique en cours d'intervention. Stabilisation obtenue par l'équipe d'anesthésie, chirurgie reprise ensuite et achevée. Transmission détaillée pour la surveillance au décours.",
+      "Complication liée à l'anesthésie survenue en peropératoire. Prise en charge immédiate, retour à un état stable permettant la poursuite du geste. Surveillance rapprochée et information de l'équipe de soins."
+    ]
+  },
+  "fermetures": [
+    "Fermeture plan par plan. Pansement. Compte des textiles et des instruments conforme en fin d'intervention. Patient confié à l'équipe de surveillance post-interventionnelle, stable.",
+    "Fermeture anatomique, pansement stérile. Contrôle final du compte des instruments. Transfert en salle de surveillance post-interventionnelle, état stable.",
+    "Fermeture, pansement. Vérification du compte des textiles. Patient extubé puis conduit en surveillance post-interventionnelle, hémodynamique stable."
+  ],
+  "anesthesie_ouvertures": [
+    "Patient classé {asa}. Consultation pré-anesthésique prise en compte, visite pré-anesthésique effectuée la veille. Vérification du jeûne et du dossier transfusionnel avant induction.",
+    "Classification {asa}. Dossier d'anesthésie revu, consultation et visite pré-anesthésiques tracées. Contrôle de l'identité, du jeûne et du site avant induction.",
+    "Patient {asa}. Reprise des éléments de la consultation pré-anesthésique. Check-list renseignée avec l'équipe chirurgicale avant induction."
+  ],
+  "anesthesie_conduites": [
+    "Anesthésie générale avec intubation orotrachéale, induction sans difficulté, ventilation contrôlée. Monitorage standard. Antibioprophylaxie administrée avant incision. Stabilité hémodynamique pendant toute la durée du geste.",
+    "Induction intraveineuse, intubation au premier essai, ventilation mécanique. Monitorage standard complété selon le terrain. Antibioprophylaxie respectée. Entretien par halogéné, besoins morphiniques modérés.",
+    "Anesthésie générale, abord veineux périphérique, intubation sans incident. Réchauffement actif et prévention des nausées. Analgésie multimodale débutée en peropératoire."
+  ],
+  "anesthesie_reveils": [
+    "Réveil calme en salle de surveillance post-interventionnelle, analgésie adaptée. Pas de nausées. Surveillance habituelle, retour en unité d'hospitalisation autorisé.",
+    "Réveil sans agitation, douleur contrôlée par le protocole en place. Reprise de l'autonomie respiratoire satisfaisante. Sortie de salle de surveillance autorisée.",
+    "Extubation en fin d'intervention, surveillance post-interventionnelle sans particularité. Analgésie efficace, patient orienté et stable."
+  ],
+  "anesthesie_antecedents": {
+    "sain": [
+      "Pas d'antécédent médical ou chirurgical notable. Pas d'allergie connue.",
+      "Aucun antécédent déclaré. Pas d'intolérance médicamenteuse connue.",
+      "Patient sans antécédent particulier, examen clinique sans anomalie."
+    ],
+    "altere": [
+      "Hypertension artérielle traitée, dyslipidémie. Antécédent chirurgical abdominal.",
+      "Diabète de type deux, surcharge pondérale. Antécédent d'anesthésie générale sans incident.",
+      "Insuffisance rénale chronique modérée, hypertension artérielle. Allergie déclarée à la pénicilline.",
+      "Cardiopathie ischémique stabilisée, bronchopneumopathie chronique. Antécédent de rachianesthésie."
+    ]
+  },
+  "anesthesie_traitements": {
+    "sain": [
+      "Aucun traitement au long cours.",
+      "Pas de traitement habituel en dehors d'un antalgique occasionnel."
+    ],
+    "altere": [
+      "Antihypertenseur et statine au long cours, poursuivis jusqu'à la veille.",
+      "Antidiabétique oral, relais discuté pour la période périopératoire.",
+      "Bêtabloquant poursuivi, inhibiteur de la pompe à protons."
+    ],
+    "anticoagule": [
+      "Anticoagulant oral au long cours : relais organisé selon le protocole de l'établissement, dernière prise arrêtée selon le délai requis.",
+      "Antivitamine K au long cours, relais par héparine de bas poids moléculaire prévu et expliqué au patient."
+    ]
+  },
+  "anesthesie_tabac": [
+    "Non fumeur.",
+    "Tabagisme sevré de longue date.",
+    "Tabagisme actif, sevrage conseillé avant l'intervention.",
+    "Tabagisme ancien, sevré depuis plusieurs années."
+  ],
+  "anesthesie_oenolisme": [
+    "Consommation d'alcool occasionnelle.",
+    "Pas de consommation déclarée.",
+    "Consommation régulière, réduction conseillée en période périopératoire."
+  ],
+  "anesthesie_premedications": [
+    "Anxiolytique léger la veille au soir si besoin. À jeun à partir de minuit, boissons claires autorisées jusqu'à deux heures avant.",
+    "Pas de prémédication. Jeûne préopératoire expliqué, boissons claires autorisées selon le protocole.",
+    "Prémédication par anxiolytique le matin de l'intervention. Traitement habituel poursuivi avec une gorgée d'eau.",
+    "Antalgique et inhibiteur de la pompe à protons la veille. Consignes de jeûne remises par écrit."
+  ],
+  "anesthesie_preparations": [
+    "Douche antiseptique la veille et le matin. Dépilation si nécessaire, hors rasage mécanique.",
+    "Préparation cutanée selon le protocole de l'établissement. Retrait des bijoux et du vernis vérifié.",
+    "Douche préopératoire, vérification du site et du côté avec le patient. Antibioprophylaxie prévue à l'induction.",
+    "Préparation digestive selon la prescription, douche antiseptique, consignes remises au patient."
+  ],
+  "anesthesie_remarques_op": [
+    "Installation et voie d'abord discutées avec l'opérateur.",
+    "Surveillance postopératoire habituelle en salle de réveil.",
+    "Prévoir un réchauffement actif et une prévention des nausées."
+  ],
+  "consultation_examens": {
+    "sain": [
+      "Examen clinique sans particularité. Auscultation cardio-pulmonaire libre, bruits du cœur réguliers. Ouverture de bouche satisfaisante, denture en bon état, mobilité cervicale conservée. Capital veineux de bonne qualité aux deux plis du coude.",
+      "Patient en bon état général. Auscultation normale, pas de souffle perçu. Intubation prévue sans difficulté attendue : distance thyro-mentonnière satisfaisante, subluxation mandibulaire possible. Abord veineux aisé.",
+      "Examen cardio-respiratoire normal. Voies aériennes supérieures d'accès facile, pas d'antécédent d'intubation difficile. Rachis cervical souple. Pas de contre-indication à une anesthésie locorégionale."
+    ],
+    "altere": [
+      "Auscultation cardiaque régulière, souffle systolique aortique connu et déjà exploré. Murmure vésiculaire diminué aux bases. Ouverture de bouche limitée, cou court : intubation possiblement difficile, matériel adapté à prévoir.",
+      "Dyspnée d'effort rapportée dès les premières marches. Œdèmes des membres inférieurs vespéraux, discrets. Capital veineux pauvre, abord échoguidé à envisager. Mobilité cervicale réduite par une arthrose connue.",
+      "Patient fragile, état général altéré. Auscultation pulmonaire avec quelques râles de congestion aux bases. Pression artérielle élevée à la consultation, traitement non pris le matin. Denture précaire, prothèse amovible à retirer avant l'induction.",
+      "Obésité avec retentissement respiratoire, ronflements rapportés par l'entourage et somnolence diurne : dépistage d'un syndrome d'apnées du sommeil demandé avant l'intervention. Abord veineux difficile."
+    ]
+  },
+  "consultation_conclusions": {
+    "sain": [
+      "Patient classé {asa}. Pas de contre-indication à l'anesthésie générale pour {acte}. Accord donné pour l'intervention programmée.",
+      "Classification {asa}. Aucune exploration complémentaire nécessaire. Patient apte pour {acte}.",
+      "Patient classé {asa}, bilan sans anomalie. Accord anesthésique pour {acte}."
+    ],
+    "altere": [
+      "Patient classé {asa}. Intervention possible pour {acte} sous réserve de la poursuite du traitement habituel et d'une surveillance post-interventionnelle rapprochée.",
+      "Classification {asa}. Accord pour {acte} après optimisation du traitement en cours. Avis cardiologique demandé et joint au dossier.",
+      "Patient classé {asa}, terrain à risque. Intervention maintenue pour {acte} ; passage en surveillance continue à prévoir selon le déroulement.",
+      "Patient classé {asa}. Pour {acte}, intubation potentiellement difficile anticipée : plateau d'intubation difficile demandé en salle. Information donnée au patient."
+    ]
+  },
+  "consultation_informations": [
+    "Information donnée au patient sur le déroulement de l'anesthésie, ses bénéfices et ses risques. Document d'information remis. Questions du patient reprises en fin de consultation.",
+    "Consentement éclairé recueilli après explication des techniques envisagées et des alternatives. Consignes de jeûne remises par écrit.",
+    "Déroulement expliqué au patient : prise en charge au bloc, réveil en salle de surveillance post-interventionnelle, modalités de l'analgésie. Coordonnées du service remises.",
+    "Explications données sur l'anesthésie prévue et sur la conduite à tenir pour les traitements en cours. Accord du patient noté. Date de la visite pré-anesthésique précisée."
+  ],
+  "documents_courriers": [
+    "Chère consœur, cher confrère, je vous adresse ce patient que je suis depuis plusieurs années, pour la prise en charge que nous avons évoquée. Son traitement habituel est reconduit sans modification. Je reste à votre disposition pour tout élément complémentaire et vous remercie de votre prise en charge.",
+    "Chère consœur, cher confrère, je vous confie ce patient pour l'intervention prévue. L'indication a été posée après échec du traitement médical bien conduit. Le bilan préopératoire demandé en ville est joint. Je vous remercie de me tenir informé de la suite.",
+    "Chère consœur, cher confrère, ce patient vous est adressé sur sa demande, après information sur les différentes options thérapeutiques. Il n'y a pas d'élément nouveau depuis le dernier courrier. Vous trouverez ci-joint les comptes rendus des explorations réalisées.",
+    "Chère consœur, cher confrère, je vous adresse ce patient dont l'état s'est modifié depuis notre dernier échange. Une réévaluation me paraît souhaitable avant le geste envisagé. Le traitement en cours figure sur l'ordonnance jointe."
+  ],
+  "documents_consentements": [
+    "Je déclare avoir reçu une information claire sur l'intervention proposée, sur ses bénéfices attendus, sur ses risques et sur les alternatives possibles. J'ai pu poser toutes les questions que je souhaitais et les réponses apportées m'ont satisfait. Je donne mon accord pour la réalisation de cette intervention.",
+    "Le praticien m'a expliqué la nature de l'intervention envisagée, son déroulement et les suites habituelles. J'ai été informé des complications possibles, y compris exceptionnelles, ainsi que des conséquences d'une absence de traitement. Je consens à l'intervention et aux gestes qui pourraient s'avérer nécessaires pendant celle-ci.",
+    "J'atteste avoir bénéficié d'un entretien au cours duquel l'intervention m'a été présentée, de même que la technique d'anesthésie retenue. Un délai de réflexion m'a été laissé. Je confirme mon accord et reconnais avoir reçu un exemplaire du document d'information."
+  ],
+  "documents_imagerie": [
+    "Examen réalisé dans les conditions habituelles. Pas d'anomalie de densité ni de prise de contraste suspecte. Les structures explorées sont de morphologie normale. Pas d'épanchement, pas d'adénomégalie de taille significative. Conclusion : examen sans anomalie décelable.",
+    "Exploration de bonne qualité technique. Mise en évidence d'une lésion correspondant à la symptomatologie décrite, sans signe d'extension aux structures de voisinage. Pas d'anomalie associée sur le reste du champ exploré. Conclusion : aspect compatible avec le diagnostic clinique évoqué.",
+    "Examen comparé au précédent. Les anomalies connues sont stables en taille et en aspect. Pas d'apparition de lésion nouvelle. Les voies d'excrétion sont libres. Conclusion : stabilité par rapport à l'examen antérieur.",
+    "Examen limité par la coopération du patient, interprétable néanmoins. Pas d'argument pour une complication aiguë. Remaniements d'allure chronique, sans caractère évolutif. Conclusion : absence de signe de complication."
+  ],
+  "documents_anapath": [
+    "Examen macroscopique : pièce adressée en totalité, fixée dans le formol. Examen microscopique : la lésion est bien limitée, sans franchissement de la limite d'exérèse. Pas d'image d'invasion vasculaire ou lymphatique. Conclusion : lésion bénigne, exérèse complète.",
+    "Examen macroscopique : prélèvement orienté, berges encrées. Examen microscopique : remaniements inflammatoires chroniques avec fibrose. Absence de signe de malignité sur l'ensemble des coupes examinées. Conclusion : lésion inflammatoire, sans caractère tumoral.",
+    "Examen macroscopique : pièce d'exérèse adressée fragmentée. Examen microscopique : prolifération de densité modérée, aux limites d'exérèse saines sur les coupes examinées. Pas d'embole vasculaire. Conclusion : exérèse paraissant complète, surveillance recommandée."
+  ]
+}

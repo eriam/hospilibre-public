@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "5d727072-eeab-47a1-b515-788821ca3798",
+		"name": "admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "identicate",
+			"item": [
+				{
+					"name": "identicate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"User matching identifier exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const data = jsonData.data;\r",
+									"\r",
+									"    pm.expect(data).to.be.an(\"object\");\r",
+									"    pm.expect(data).to.have.property('type', 'identicate');\r",
+									"    pm.expect(data).to.have.property('attributes');\r",
+									"\r",
+									"    const attributes = data.attributes;\r",
+									"\r",
+									"    pm.expect(attributes).to.have.property('is_identicate', true);\r",
+									"\r",
+									"    var login = pm.environment.get(\"Sample_Login\");\r",
+									"\r",
+									"    pm.expect(attributes).to.have.property('login', login);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/identicate?login={{Sample_Login}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"identicate"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "{{Sample_Login}}"
+								},
+								{
+									"key": "test",
+									"value": "lorem",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "identicate (does not exist)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"User matching identifier does not exist\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const data = jsonData.data;\r",
+									"\r",
+									"    pm.expect(data).to.be.an(\"object\");\r",
+									"    pm.expect(data).to.have.property('type', 'identicate');\r",
+									"    pm.expect(data).to.have.property('attributes');\r",
+									"\r",
+									"    const attributes = data.attributes;\r",
+									"\r",
+									"    pm.expect(attributes).to.have.property('is_identicate', false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/identicate?login={{$randomUserName}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"identicate"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "{{$randomUserName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "identicate (user not specified)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is not 200\", function () {\r",
+									"    pm.response.to.have.not.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.be.have.property(\"errors\");\r",
+									"});\r",
+									"pm.test(\"Error says no login was sent\", function () {\r",
+									"    var jsonData  = pm.response.json();\r",
+									"    var jsonError = jsonData.errors;\r",
+									"    pm.expect(jsonError).to.have.property('code', 0);\r",
+									"    pm.expect(jsonError).to.have.property('message', \"No login send to test.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/identicate",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"identicate"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "ThisUserDoesNotExist",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tokens",
+			"item": [
+				{
+					"name": "tokens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Token data is provided\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const data = jsonData.data;\r",
+									"\r",
+									"    pm.expect(data).to.be.an(\"object\");\r",
+									"    pm.expect(data).to.have.property('type', 'token');\r",
+									"    pm.expect(data).to.have.property('attributes');\r",
+									"\r",
+									"    const attributes = data.attributes;\r",
+									"\r",
+									"    pm.expect(attributes).to.have.property('key');\r",
+									"    pm.expect(attributes).to.have.property('hash');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/tokens",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"tokens"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{Auth_Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Auth_Username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

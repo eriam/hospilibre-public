@@ -1,0 +1,13 @@
+{
+  "_comment": "Cliquet descendant (ratchet) des compteurs de licences. Origine pré-nettoyage : OXOL_SEUL=1280. Objectif : 0. Toute HAUSSE vs ces valeurs = régression (gate rouge). Abaisser au fur et à mesure du balayage clean-room. tools/ exclu du périmètre (outillage d'audit, cf. audit_licences.py SKIP_DIRS). Cf. tools/audit_gate.py.",
+  "_origine_pre_nettoyage": {
+    "OXOL_SEUL": 1280,
+    "PROPRIETARY": 11,
+    "DUAL_GPL_OXOL": 11422,
+    "GPL_SEUL": 61
+  },
+  "OXOL_SEUL": 0,
+  "PROPRIETARY": 11,
+  "DUAL_GPL_OXOL": 11422,
+  "GPL_SEUL": 61
+}

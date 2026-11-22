@@ -1,0 +1,90 @@
+system_legacy_modules_show:
+  path: api/legacy/modules/{mod_name}
+  controller: Hospilibre\System\Controllers\CModulesController::showModuleLegacy
+  methods: GET
+  defaults:
+    permission: none
+  requirements:
+    mod_name: '\w+'
+  options:
+    description: Show module informations
+    accept:
+      - application/json
+
+system_modules_show:
+  path: api/modules/{mod_name}
+  controller: Hospilibre\System\Controllers\CModulesController::showModule
+  methods: GET
+  defaults:
+    permission: none
+  requirements:
+    mod_name: '\w+'
+  options:
+    description: Show module informations for AppBar
+    accept:
+      - application/json
+
+system_modules_list:
+  path: api/modules
+  controller: Hospilibre\System\Controllers\CModulesController::listModules
+  methods: GET
+  defaults:
+    permission: none
+  options:
+    description: List modules
+    accept:
+      - application/json
+    parameters:
+      state: installed|active|visible
+
+system_modules_tabs_list:
+  path: api/modules/{mod_name}/tabs
+  controller: Hospilibre\System\Controllers\CTabController::listModuleTabs
+  methods: GET
+  defaults:
+    permission: none
+  options:
+    description: List tabs for module
+    accept:
+      - application/json
+
+system_modules_routes_list:
+  path: api/modules/{mod_name}/routes
+  controller: Hospilibre\System\Controllers\CModulesController::listModuleRoutes
+  methods: GET
+  defaults:
+    permission: none
+  options:
+    description: List routes for module
+    accept:
+      - application/json
+
+system_modules_pinned_tabs_show:
+  path: api/modules/{mod_name}/pin
+  controller: Hospilibre\System\Controllers\CTabController::showPinnedTabs
+  methods: GET
+  defaults:
+    permission: none
+  requirements:
+    mod_name: '\w+'
+  options:
+    description: Show pinned tabs for module informations
+    accept:
+      - application/json
+
+system_modules_pinned_tabs_set:
+  path: api/modules/{mod_name}/tabs
+  controller: Hospilibre\System\Controllers\CTabController::setPinnedTab
+  methods: POST
+  defaults:
+    permission: none
+  requirements:
+    mod_name: '\w+'
+  options:
+    description: Remove all pinned tabs for the module and set pinned tabs from request body
+    accept:
+      - application/json
+    body:
+      required: true
+      content-type:
+        - application/json
